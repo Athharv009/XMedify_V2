@@ -1,0 +1,40 @@
+
+.iconCardSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  background: #FAFBFE;
+  width: 200px;
+  height: 150px;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.cardSection :hover {
+    background-color: #2AA7FF14;
+    border: 1px solid #2AA7FF
+}
+
+
+.cardSection {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card span {
+    font-size: 18px;
+    color: #ABB6C7;
+    font-weight: 400;
+}

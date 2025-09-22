@@ -1,0 +1,22 @@
+
+.mainOffersDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.offersSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.offers img{
+    width: 398px;
+    height: 199.15px;
+    border-radius: 20px;
+}
