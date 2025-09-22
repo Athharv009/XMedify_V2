@@ -1,0 +1,10 @@
+.mainDiv {
+    text-align: center;
+}
+
+.mainDiv h1 {
+    font-size: 48px;
+    font-weight: 600;
+    color: #1B3C74;
+    margin: 60px;
+}

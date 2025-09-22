@@ -1,16 +1,14 @@
-import HeroServices from "../IconLayout/HeroServices";
 import NavBar from "../Navbar/NavBar";
 import styles from "./HeroSection.module.css";
 
 export default function HeroSection() {
   return (
-    <div>
+
       <div className={styles.HeroSection}>
         <div>
           <NavBar />
         </div>
-        <div>
-          <div className={styles.hero}>
+        <div className={styles.hero}>
             <div className={styles.tagHero}>
               <h2>
                 Skip the travel! Find Online <br />
@@ -32,12 +30,8 @@ export default function HeroSection() {
                 />
               </div>
             </div>
-          </div>
-        </div>
-        <div className={styles.heroServices}>
-          <HeroServices />
         </div>
       </div>
-    </div>
+
   );
 }

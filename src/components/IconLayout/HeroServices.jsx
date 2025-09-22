@@ -1,5 +1,4 @@
 import IconCard from "../IconCard/IconCard";
-import Offers from "../Sections/Offers/Offers";
 import styles from "./HeroServices.module.css";
 
 export default function HeroServices() {
@@ -36,9 +35,6 @@ export default function HeroServices() {
           </div>
           <IconCard />
         </div>
-      </div>
-      <div className={styles.offers}>
-      <Offers />
       </div>
     </div>
   );

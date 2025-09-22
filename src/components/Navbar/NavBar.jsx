@@ -37,9 +37,9 @@ export default function NavBar () {
         //     </div>
         // </div>
 
-        <div>
+        <div className={styles.mainNavbarDiv}>
             <div className={styles.headerTop}>
-                <p style={{ margin: 0, fontWeight: 400 }}>
+                <p style={{fontWeight: 400 }}>
                     The health and well-being of our patients and their health care team will always be our priority, so we follow the best practices for cleanliness.
                 </p>
             </div>
