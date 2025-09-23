@@ -1,0 +1,27 @@
+.headingPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.headingPage p {
+  font-size: 16px;
+  line-height: 27px;
+  font-weight: 600;
+  letter-spacing: 0%;
+  text-align: center;
+  margin-top: 40px;
+  color: #2aa7ff;
+  margin-bottom: 0px;
+}
+
+.headingPage h1 {
+  color: #1b3c74;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 67px;
+  letter-spacing: 0%;
+  text-align: center;
+  margin-top: 0px;
+}

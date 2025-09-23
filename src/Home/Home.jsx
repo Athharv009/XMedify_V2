@@ -4,6 +4,7 @@ import Specialisation from "../components/Sections/Specialisation/Specialisation
 import Offers from "../components/Sections/Offers/Offers";
 import Specialists from "../components/Sections/Specialists/Specialists"
 import PatientCaring from "../components/Sections/PatientCaring/PatientCaring";
+import Blogs from "../components/Sections/Blogs/Blogs";
 
 export default function Home() {
   return (
@@ -25,6 +26,9 @@ export default function Home() {
       </div>
       <div>
         <PatientCaring />
+      </div>
+      <div>
+        <Blogs />
       </div>
     </div>
   );
