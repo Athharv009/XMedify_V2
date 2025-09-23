@@ -1,0 +1,194 @@
+.mainDiv {
+  background: linear-gradient(
+    81deg,
+    #e7f0ff 9.01%,
+    rgba(232, 241, 255, 0.47) 89.11%
+  );
+  display: flex;
+  gap: 80px;
+  padding-bottom: 50px;
+  padding-left: 137px;
+  padding-right: 137px;
+}
+
+.leftSide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  /* padding-right: 50px; */
+}
+
+.leftSide span {
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 17px;
+  leading-trim: NONE;
+  line-height: 18px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #2aa7ff;
+}
+
+.leftSide h1 {
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 48px;
+  leading-trim: NONE;
+  line-height: 67px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #1b3c74;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.leftSide p {
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 17px;
+  leading-trim: NONE;
+  line-height: 240%;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #77829d;
+  margin-top: 0px;
+}
+
+.rightSide {
+  padding-top: 50px;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 30px;
+}
+
+.happyPatientCard {
+  background: #ffffff;
+  box-shadow: 0px 15px 45px -5px #00000012;
+  width: 242.5px;
+  height: 304px;
+  opacity: 1;
+  border-radius: 8px;
+}
+
+.happyPatientCard div {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.happyPatientCard div img {
+  height: 100px;
+  width: 100px;
+}
+
+.happyPatientCard div h1 {
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 48px;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  color: #1b3c74;
+  margin-bottom: 0px;
+  margin-top: 20px;
+}
+
+.happyPatientCard div p {
+  color: #77829d;
+  margin-bottom: 0px;
+  margin-top: 25px;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 18px;
+  leading-trim: NONE;
+  line-height: 28px;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.cardDivFirstCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.cardDivSecondCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+  margin-top: 100px;
+}
+
+@media screen and (max-width: 1150px) {
+    .mainDiv {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
+@media screen and (max-width: 950px) {
+    .mainDiv {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+
+    .leftSide {
+        padding-top: 50px;
+        width: 100%;
+    }
+
+    .rightSide {
+        padding-top: 0;
+        width: 100%;
+        justify-content: center;
+    }
+
+}
+@media screen and (max-width: 600px) {
+    .happyPatientCard{
+        width: 200px;
+    }
+    .happyPatientCard div img{
+        height: 80px;
+        width: 80px;
+    }
+    .happyPatientCard div h1{
+        font-size: 40px;
+    }
+    .mainDiv {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+}
+@media screen and (max-width: 450px) {
+
+    .rightSide {
+        flex-direction: column;
+        gap: 0px;
+    }
+
+    .mainDiv {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .happyPatientCard{
+        width: 220px;
+    }
+
+    .cardDivSecondCol {
+        margin-top: 30px;
+    }
+}
+
+
+
