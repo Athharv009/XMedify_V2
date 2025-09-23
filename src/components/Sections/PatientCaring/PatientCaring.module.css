@@ -1,0 +1,154 @@
+.callConsultation {
+  background: #ffffff;
+  box-shadow: 0px 40px 40px -15px #94b6ce26;
+  border-radius: 8px;
+  padding: 15px;
+  width: 234px;
+  padding-bottom: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+  position: relative;
+  margin-right: -50px;
+}
+
+.patientPic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
+  margin-bottom: 50px;
+}
+
+.patientDiv1 {
+  display: flex;
+  align-items: center;
+}
+
+.patient1ImgDiv {
+  border: 5px solid white;
+  z-index: 1;
+}
+
+.patient1ImgDiv img,
+.patientDiv2 img {
+  height: 275px;
+  width: 332px;
+  object-fit: cover;
+}
+
+.patientDiv2 {
+  border: 5px solid white;
+  z-index: 2;
+  position: relative;
+  margin-top: -50px;
+}
+
+.patientCaringMain {
+  background: linear-gradient(
+    81deg,
+    #e7f0ff 9.01%,
+    rgba(232, 241, 255, 0.47) 89.11%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+  padding: 138px;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.patientContent {
+  font-family: "Poppins", sans-serif;
+}
+
+.tickDiv {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.tickDiv span {
+  color: #1b3c74;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 500;
+  letter-spacing: 0%;
+  vertical-align: middle;
+}
+
+.tickDivMain {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  justify-content: center;
+}
+
+@media screen and (max-width: 1250px) {
+  .patient1ImgDiv img,
+  .patientDiv2 img {
+    height: 250px;
+    width: 300px;
+    object-fit: cover;
+  }
+  .patientCaringMain {
+    gap: 30px;
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .patientCaringMain {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .patient1ImgDiv img,
+  .patientDiv2 img {
+    height: 215px;
+    width: 270px;
+  }
+
+  .callConsultation {
+    padding-left: 0;
+    padding-right: 0;
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+
+  .patientCaringMain {
+    gap: 0px;
+  }
+
+  .patient1ImgDiv img,
+  .patientDiv2 img {
+    height: 200px;
+    width: 250px;
+  }
+  .patientDiv1 {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .callConsultation {
+    margin-right: 0;
+  }
+
+  .patientDiv2 {
+    margin-top: 0;
+  }
+
+  .patientPic {
+    gap: 30px;
+  }
+
+  .patientContent h2 {
+    font-size: 40px;
+  }
+}

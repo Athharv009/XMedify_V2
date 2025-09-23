@@ -17,9 +17,7 @@ export default function SpecialistCard() {
         640: { slidesPerView: 2 },
         1024:{ slidesPerView: 3 },
       }}
-      style={{marginBottom: "60px"}}
-    >
-      {/* ----- 1 ----- */}
+      >
       <SwiperSlide className={styles.swiperslider}>
         <div className={styles.specialCard}>
           <img
@@ -30,8 +28,6 @@ export default function SpecialistCard() {
         <h2 className={styles.name}>Dr. Lesley Hull</h2>
         <p className={styles.spec}>Medicine</p>
       </SwiperSlide>
-
-      {/* ----- 2 ----- */}
       <SwiperSlide className={styles.swiperslider}>
         <div className={styles.specialCard}>
           <img
@@ -42,8 +38,6 @@ export default function SpecialistCard() {
         <h2 className={styles.name}>Dr. Ahmad Khan</h2>
         <p className={styles.spec}>Neurologist</p>
       </SwiperSlide>
-
-      {/* ----- 3 ----- */}
       <SwiperSlide className={styles.swiperslider}>
         <div className={styles.specialCard}>
           <img
@@ -54,8 +48,6 @@ export default function SpecialistCard() {
         <h2 className={styles.name}>Dr. Heena Sachdeva</h2>
         <p className={styles.spec}>Orthopedics</p>
       </SwiperSlide>
-
-      {/* ----- 4 ----- */}
       <SwiperSlide className={styles.swiperslider}>
         <div className={styles.specialCard}>
           <img
@@ -66,8 +58,6 @@ export default function SpecialistCard() {
         <h2 className={styles.name}>Dr. Ankur Sharma</h2>
         <p className={styles.spec}>Medicine</p>
       </SwiperSlide>
-
-      {/* ----- 5 ----- */}
       <SwiperSlide className={styles.swiperslider}>
         <div className={styles.specialCard}>
           <img
