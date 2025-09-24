@@ -1,0 +1,240 @@
+.mainDivContent {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.headerText p {
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 16px;
+  line-height: 27px;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  color: #2aa7ff;
+}
+
+.headerText h1 {
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 48px;
+  leading-trim: NONE;
+  line-height: 67px;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  color: #1b3c74;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  /* padding-left: 80px; */
+  margin-bottom: 50px;
+}
+
+.happyDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 241px;
+  height: 104px;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0px 15px 35px -5px #00000012;
+  object-fit: cover;
+  z-index: 2;
+  margin-right: -150px;
+  position: relative;
+  margin-top: 250px;
+}
+
+.happyDiv div h3 {
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 24px;
+  line-height: 33.6px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #1b3c74;
+}
+
+.happyDiv div span {
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 17px;
+  line-height: 28px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #77829d;
+}
+
+.iconDiv {
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  margin-left: -50px;
+  margin-bottom: 120px;
+}
+
+.mainImg {
+  width: 500px;
+  height: 479px;
+  opacity: 1;
+  top: 10px;
+  left: 11px;
+  border-width: 10px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 10px solid #ffffff;
+  box-shadow: 0px 15px 55px -10px #00000017;
+  z-index: 1;
+}
+
+.contentFAQs {
+  width: 464px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.accordion {
+    /* style={{display:"flex", justifyContent: "space-between", alignItems: "center"}} */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quetion {
+  font-family: "poppins", sans-serif;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 18px;
+  line-height: 30px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #1b3c74;
+  margin-top: 0px;
+}
+
+.sign {
+  color: #2aa7ff;
+  font-family: "font awesome 5 free", sans-serif;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 0%;
+  text-align: right;
+  width: 16px;
+  height: 18px;
+  margin-top: 0;
+}
+
+@media screen and (max-width: 1250px) {
+    .mainDivContent {
+        gap: 30px;
+    }
+    .mainImg {
+        width: 480px;
+        height: 460px;
+    }
+}
+@media screen and (max-width: 650px) {
+    .mainImg {
+        width: 400px;
+        height: 390px;
+    }
+    .happyDiv {
+        width: 180px;
+        height: 80px;
+    }
+    .happyDiv img {
+        height: 33px;
+        width: 33px;
+    }
+    .happyDiv div h3 {
+        font-size: 18px; 
+        margin-bottom: 0px;
+    }
+    .happyDiv div span {
+        font-size: 14px;
+        margin-top: 0px;
+    }
+    .mainDivContent {
+        flex-direction: column;
+        align-items: center;
+    }
+    .iconDiv img {
+        width: 60px;
+        height: 30px;
+    }
+    .iconDiv {
+        height: 60px;
+        width: 60px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .quetion {
+        font-size: 14px;
+    }
+
+    .mainImg {
+        width: 340px;
+        height: 320px;
+    }
+    .headerText h1 {
+        font-size: 32px;
+    }
+    .contentFAQs {
+        width: 80%;
+    }
+    .content {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .mainImg {
+        width: 260px;
+        height: 240px;
+    }
+    .happyDiv {
+        width: 150px;
+    }
+    .happyDiv img{
+        width: 22px;
+        height: 22px;
+    }
+    .happyDiv div h3{
+        font-size: 16px;
+    }
+    .happyDiv div span {
+        font-size: 12px;
+    }
+    .iconDiv img{
+        width: 40px;
+        height: 20px;
+    }
+    .iconDiv {
+        width: 40px;
+        height: 40px;
+    }
+    .contentFAQs {
+        gap: 30px;
+    }
+    .mainDivContent {
+        gap: 0px;
+    }
+}
