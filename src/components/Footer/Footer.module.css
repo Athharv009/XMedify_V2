@@ -1,0 +1,70 @@
+.mainAppDiv {
+  background: linear-gradient(
+    81deg,
+    #e7f0ff 9.01%,
+    rgba(232, 241, 255, 0.47) 89.11%
+  );
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.mobileBody1 {
+  opacity: 1;
+  /* width: 927px; */
+  height: 450 px;
+  width: 305px;
+  object-fit: cover;
+  z-index: 2;
+  margin-bottom: -430px;
+  margin-top: 50px;
+}
+
+.mobilePage1 {
+  /* width: 927px; */
+  height: 600px;
+  width: 292px;
+  border-radius: 40px;
+  object-fit: cover;
+  z-index: 1;
+  margin-top: -194px;
+  margin-left: 7px;
+}
+.mobileBody2 {
+  opacity: 1;
+  /* width: 927px; */
+  height: 450 px;
+  width: 305px;
+  object-fit: cover;
+  z-index: 2;
+  margin-bottom: -430px;
+  margin-top: 50px;
+}
+
+.mobilePage2 {
+  /* width: 927px; */
+  height: 600px;
+  width: 292px;
+  border-radius: 40px;
+  object-fit: cover;
+  z-index: 1;
+  margin-top: -194px;
+  margin-left: 7px;
+}
+
+.mobile1 {
+  z-index: 3;
+  margin-top: 80px;
+  margin-right: -100px;
+}
+.mobileMain {
+  display: flex;
+  z-index: 1;
+}
+
+.footerSection {
+  background: #1B3C74;
+  z-index: 2;
+  position: relative;
+  margin-top: -250px;
+}

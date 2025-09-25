@@ -149,6 +149,7 @@
 }
 
 .tabsList {
+    font-family: "poppins", sans-serif;
     list-style: none;
     display: flex;
     gap: 40px;
@@ -158,6 +159,7 @@
 }
 
 .btnBooking {
+    font-family: "poppins",sans-serif;
     background-color: #2AA8FF;
     border-radius: 8px;
     width: 130px;
@@ -244,6 +246,7 @@
     }
 
     .tabsList {
+        font: "Poppins", sans-serif;
         flex-direction: column;
         gap: 15px;
         padding: 20px 0;

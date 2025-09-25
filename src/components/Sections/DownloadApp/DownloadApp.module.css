@@ -1,0 +1,35 @@
+.downloadContent {
+    margin-top: 100px;
+}
+
+.textDownload h2{
+    font-family: "Poppins",sans-serif;
+font-weight: 600;
+font-style: SemiBold;
+font-size: 48px;
+line-height: 67px;
+letter-spacing: 0%;
+vertical-align: middle;
+color: #1B3C74;
+margin-bottom: 0px;
+margin-top: 0px;
+}
+
+.textDownload p {
+    font-family: "Lato", sans-serif;
+font-weight: 700;
+font-style: Bold;
+font-size: 16px;
+leading-trim: NONE;
+line-height: 24px;
+letter-spacing: 0%;
+vertical-align: middle;
+
+}
+
+.downloadBtn {
+    display: flex;
+    gap: 30px;
+    justify-content: flex-start;
+    margin-top: 50px;
+}

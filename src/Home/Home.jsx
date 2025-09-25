@@ -7,6 +7,7 @@ import PatientCaring from "../components/Sections/PatientCaring/PatientCaring";
 import Blogs from "../components/Sections/Blogs/Blogs";
 import OurFamilies from "../components/Sections/OurFamilies/OurFamilies";
 import FAQs from "../components/Sections/FAQs/FAQs";
+import Footer from "../components/Footer/Footer";
 
 export default function Home() {
   return (
@@ -37,6 +38,9 @@ export default function Home() {
       </div>
       <div>
         <FAQs />
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   );
