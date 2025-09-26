@@ -7,6 +7,8 @@
   display: flex;
   justify-content: center;
   gap: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .mobileBody1 {
@@ -18,6 +20,7 @@
   z-index: 2;
   margin-bottom: -430px;
   margin-top: 50px;
+  position: relative;
 }
 
 .mobilePage1 {
@@ -39,6 +42,7 @@
   z-index: 2;
   margin-bottom: -430px;
   margin-top: 50px;
+  position: relative;
 }
 
 .mobilePage2 {
@@ -67,4 +71,73 @@
   z-index: 2;
   position: relative;
   margin-top: -250px;
+}
+
+@media screen and (max-width: 1150px) {
+  .mobileMain {
+    height: 700px;
+    width: 50%;
+    justify-content: center;
+  }
+  .mobileBody1 {
+    height: 600px;
+    width: 255px;
+    object-fit: contain;
+    margin-top: 20px;
+  }
+  .mobilePage1 {
+    height: 550px;
+    width: 242px;
+    object-fit: cover;
+    margin-top: -140px;
+  }
+  .mobileBody2 {
+    height: 600px;
+    width: 255px;
+    object-fit: contain;
+    margin-top: 20px;
+  }
+  .mobilePage2{
+    height: 550px;
+    width: 242px;
+    object-fit: cover;
+    margin-top: -140px;
+  }
+  .footerSection {
+    margin-top: -200px;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .mainAppDiv {
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+  }
+  .mobilePage1 {
+    height: 535px;
+  }
+  .mobilePage2{
+    height: 535px;
+  }
+  .footerSection {
+    margin-top: 0px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .mobileBody1, .mobileBody2 {
+    width: 200px;
+  }
+  .mobilePage1, .mobilePage2{
+    height: 420px;
+    width: 190px;
+    margin-top: -83px;
+  }
+  .mobileBody1 {
+    margin-top: 0px;
+  }
+  .mainAppDiv {
+    padding-bottom: 50px;
+  }
 }

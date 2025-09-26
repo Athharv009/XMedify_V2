@@ -9,7 +9,6 @@
     gap: 10px;
     margin-top: 50px;
 }
-.footer {}
 
 .lists ul{
     list-style: none;
@@ -43,4 +42,12 @@ vertical-align: middle;
     justify-content: space-around;
     margin-bottom: 50px;
     padding-top: 50px;
+}
+
+@media screen and (max-width: 750px) {
+    .footerContent {
+        padding-left: 20px;
+        padding-right: 20px;
+        flex-wrap: wrap ;
+    }
 }

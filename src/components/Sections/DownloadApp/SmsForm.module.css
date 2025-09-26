@@ -1,5 +1,56 @@
-
 .mainContainer {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.inputBox {
+  border: none;
+  margin-left: 15px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: "poppins", sans-serif;
+  line-height: 100%;
+  color: #b4b4be;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+.inputBoxSpan {
+  /* style={{display: "flex", alignItems: "center",width: "100%", height: "100%"}} */
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.mainDiv {
+  /* style={{width:"390px", height: "47px", background: "white", borderRadius: "8px", display: "flex", alignItems: "center"}} */
+  width: 390px;
+  height: 47px;
+  background: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+}
+@media screen and (max-width: 1050px) {
+  .mainContainer {
+    gap: 10px;
+  }
+}
+@media screen and (max-width: 620px) {
+  .mainContainer {
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 500px) {
+  /* .inputBoxSpan {
+    width: 100px;
+  } */
+  .mainDiv {
+    width: 250px;
+  }
+  .mainContainer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

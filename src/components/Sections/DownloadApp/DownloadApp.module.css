@@ -33,3 +33,40 @@ vertical-align: middle;
     justify-content: flex-start;
     margin-top: 50px;
 }
+
+.downloadBtn button img {
+    object-fit: contain;
+}
+
+.rotateArrow {
+    /* style={{ rotate: "79.51 deg", marginBottom: "30px" }} */
+    rotate: 79.51 deg;
+    margin-bottom: 30px;
+}
+
+@media screen and (max-width: 1050px) {
+    .downloadContent {
+        margin-top: 0px;
+    }
+    .rotateArrow {
+        margin-bottom: 130px;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .rotateArrow {
+        margin-bottom: 190px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .downloadBtn {
+        flex-wrap: wrap;
+    }
+    .rotateArrow {
+        margin-bottom: 290px;
+    }
+    .textDownload h2 {
+        font-size: 36px;
+    }
+}

@@ -10,7 +10,7 @@ export default function DownloadApp() {
           alt="DirectionArrrow"
           height={"112.35px"}
           width={"56.17px"}
-          style={{ rotate: "79.51 deg", marginBottom: "60px" }}
+          className={styles.rotateArrow}
         />
       </div>
       <div className={styles.downloadContent}>
@@ -20,7 +20,7 @@ export default function DownloadApp() {
           <br />
           <span style={{color: "#2AA7FF"}}>Medify</span> App
         </h2>
-        <p style={{color: "#414146"}}>Get the link to download the app</p>
+        <p style={{color: "#414146", marginBottom: "5px"}}>Get the link to download the app</p>
       </div>
       <SmsForm />
       <div className={styles.downloadBtn}>
