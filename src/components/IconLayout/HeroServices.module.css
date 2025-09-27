@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  /* width: 100%; */
   margin-top: -150px;
 }
 
@@ -21,7 +20,6 @@
   display: flex;
   flex-direction: column;
   gap: 60px;
-  
 }
 
 .servicesMain {
@@ -31,16 +29,22 @@
   margin-top: 60px;
 }
 
+/* Updated styling for the service wrapper */
 .service {
+  position: relative; /* Crucial for positioning the suggestions list */
   border: 1px solid #f0f0f0;
   background: #fafbfe;
   width: 285px;
   height: 49.9997px;
   display: flex;
-  justify-content: center;
   align-items: center;
   border-radius: 8px;
   gap: 20px;
+}
+
+/* New wrapper to handle the autocomplete dropdown */
+.autocompleteWrapper {
+  width: 100%;
 }
 
 .service input {
@@ -49,6 +53,49 @@
   animation: none;
   color: gray;
   height: 80%;
+  width: 90%; /* Ensure input takes full width of its container */
+  outline: none; /* Remove outline on focus */
+}
+
+/* Styles for the suggestions list */
+.suggestionsList {
+  position: absolute;
+  top: 100%; /* Position the list directly below the input */
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.suggestionsList li {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.suggestionsList li:last-child {
+  border-bottom: none; /* No border on the last item */
+}
+
+.suggestionsList li:hover {
+  background-color: #f0f0f0;
+}
+
+/* Style for the loading message */
+.loadingMessage {
+  padding: 10px;
+  text-align: center;
+  color: #666;
+  font-style: italic;
 }
 
 .btnSearch {
@@ -74,6 +121,7 @@
 
 .service img {
   height: 16px;
+  margin-left: 20px;
 }
 
 .btnSearch span img {
@@ -84,98 +132,60 @@
   .heroServicesMain {
     margin-top: -100px;
   }
-  .service img {
-    height: 16px;
-  }
-  .btnSearch span img {
-    height: 16px;
-  }
 }
+
 @media screen and (max-width: 1200px) {
   .heroServicesMain {
     margin-top: -50px;
-  }
-  .service img {
-    height: 16px;
-  }
-  .btnSearch span img {
-    height: 16px;
   }
   .servicesContainer {
     margin: 20px;
     margin-top: 45px;
   }
 }
+
 @media screen and (max-width: 950px) {
   .heroServicesMain {
     margin-top: -120px;
   }
-
   .servicesContainer {
     margin: 20px;
   }
   .servicesMain {
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-top: 60px;
     gap: 40px;
   }
-
-  /* .service {
-  width: 150px;
-  height: 49.9997px;
-  gap: 10px;
-  } */
-
-  .service img {
-    height: 15px;
-    margin-left: 20px;
-  }
-
-  .service input {
-    width: 100%;
-  }
-
   .service {
     width: 80%;
   }
-
   .btwInpBtn {
     flex-direction: column;
     width: 100%;
     gap: 40px;
   }
-
   .btwInpBtn button {
     width: 80%;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .heroServicesMain {
-    /* margin-top: 70px; */
-  }
-
   .servicesMain {
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 40px;
   }
-
   .service {
     width: 80%;
   }
-
   .btwInpBtn {
     flex-direction: column;
     width: 100%;
     gap: 40px;
   }
-
   .btwInpBtn button {
     width: 80%;
   }

@@ -1,0 +1,131 @@
+
+.mainContainer {
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+    z-index: 2;
+    margin-top: -70px;
+    width: 1166px;
+    height: 111px;
+    box-shadow: 6px 6px 35px 0px #1028511C;
+    border-radius: 15px;
+}
+
+.searchState {
+    display: flex;
+    align-items: center;
+    width: 20%;
+    height: 50px;
+    background: #FAFBFE;
+    border: 1px solid #F0F0F0;
+    border-radius: 8px;
+}
+
+.searchInputState {
+    width: 80%;
+    height: 45px;
+    border: none;
+    background: #FAFBFE;
+    font-family: "poppins", sans-serif;
+font-weight: 400;
+font-style: Regular;
+font-size: 14px;
+line-height: 100%;
+letter-spacing: 2%;
+color: #ABB6C7;
+
+}
+
+.searchInputCity {
+    width: 90%;
+    height: 45px;
+    border: none;
+    background: #FAFBFE;
+    font-family: "poppins", sans-serif;
+font-weight: 400;
+font-style: Regular;
+font-size: 14px;
+line-height: 100%;
+letter-spacing: 2%;
+color: #ABB6C7;
+
+}
+
+.searchCity {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    height: 50px;
+    background: #FAFBFE;
+    border: 1px solid #F0F0F0;
+    border-radius: 8px;
+}
+
+.searchCity img {
+    margin: 10px;
+}
+.searchState img {
+    margin: 10px;
+}
+
+.btnSearch {
+    width: 231px;
+    height: 50px;
+    background: #2AA8FF;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    font-family: "poppins" , sans-serif;
+font-weight: 500;
+font-style: Medium;
+font-size: 16px;
+line-height: 100%;
+letter-spacing: 2%;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 10px;
+}
+
+/* Styles for the suggestions list */
+.suggestionsList {
+  position: absolute;
+  top: 100%; /* Position the list directly below the input */
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.suggestionsList li {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.suggestionsList li:last-child {
+  border-bottom: none; /* No border on the last item */
+}
+
+.suggestionsList li:hover {
+  background-color: #f0f0f0;
+}
+
+/* Style for the loading message */
+.loadingMessage {
+  padding: 10px;
+  text-align: center;
+  color: #666;
+  font-style: italic;
+}

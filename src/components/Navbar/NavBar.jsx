@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import styles from "./NavBar.module.css"
 import { useState } from "react";
 
@@ -44,12 +45,14 @@ export default function NavBar () {
                 </p>
             </div>
             <div className={styles.navbarSection}>
+                <Link to='/' style={{textDecoration: "none"}}>
                 <div className={styles.medify}>
                     <div style={{ background: '#2AA8FF', width: '23px', height: '23px', display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: '5px' }}>
                         <img src={require('../../assets/vector.png')} alt="logo" height={'11px'} width={'10px'} />
                     </div>
-                    <span>Medify</span>
+                    <span >Medify</span>
                 </div>
+                </Link>
                 
                 {/* The hamburger button, only visible on mobile */}
                 <button className={styles.hamburger} onClick={toggleMenu} aria-expanded={isMenuOpen}>
@@ -61,7 +64,7 @@ export default function NavBar () {
                 {/* The tabs section, which will be toggled on mobile */}
                 <div className={`${styles.tabsSection} ${isMenuOpen ? styles.tabsOpen : ''}`}>
                     <ul className={styles.tabsList}>
-                        <li>Find Doctors</li>
+                        <li><Link to='/find-doctors' style={{textDecoration: "none", color: "#102851"}}>Find Doctors</Link></li>
                         <li>Hospitals</li>
                         <li>Medicines</li>
                         <li>Surgeries</li>
