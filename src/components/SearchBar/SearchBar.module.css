@@ -25,7 +25,7 @@
 
 .searchInputState {
     width: 80%;
-    height: 45px;
+    height: 40px;
     border: none;
     background: #FAFBFE;
     font-family: "poppins", sans-serif;
@@ -40,7 +40,7 @@ color: #ABB6C7;
 
 .searchInputCity {
     width: 90%;
-    height: 45px;
+    height: 40px;
     border: none;
     background: #FAFBFE;
     font-family: "poppins", sans-serif;
@@ -128,4 +128,31 @@ gap: 10px;
   text-align: center;
   color: #666;
   font-style: italic;
+}
+
+@media screen and (max-width: 850px) {
+  .btnSearch {
+    width: 200px;
+  }
+}
+@media screen and (max-width: 750px) {
+  .btnSearch {
+    width: 150px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .mainContainer {
+    flex-direction: column;
+    height: 190px;
+  }
+  .searchState, .searchCity, .btnSearch {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .mainContainer {
+    width: 100%;
+  }
 }

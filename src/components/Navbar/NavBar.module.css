@@ -206,13 +206,16 @@
 /* Rotate bars to form a cross when menu is open */
 .hamburger[aria-expanded="true"] .bar:nth-child(1) {
     transform: rotate(45deg);
+    position: relative;
 }
 .hamburger[aria-expanded="true"] .bar:nth-child(2) {
     opacity: 0;
     transform: translateX(-20px);
+    position: relative;
 }
 .hamburger[aria-expanded="true"] .bar:nth-child(3) {
     transform: rotate(-45deg);
+    position: relative;
 }
 
 
@@ -247,6 +250,8 @@
         transform: translateY(-100%);
         visibility: hidden;
         opacity: 0;
+        z-index: 5;
+        border-radius: 15px;
     }
 
     .tabsOpen {
@@ -254,14 +259,18 @@
         visibility: visible;
         opacity: 1;
         width: 90%;
+        height: 60vh;
     }
 
     .tabsList {
-        font: "Poppins", sans-serif;
+        font: "poppins", sans-serif;
         flex-direction: column;
         gap: 15px;
-        padding: 20px 0;
         margin-left: 20px;
+        height: 50vh;
+    }
+    .tabsList li {
+
     }
 
     .tabsSection > .btnBooking {

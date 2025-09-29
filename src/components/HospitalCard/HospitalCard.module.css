@@ -1,0 +1,240 @@
+.contentText {
+    margin-top: 100px;
+}
+
+.contentText h2 {
+    font-family: "poppins", sans-serif;
+font-weight: 500;
+font-style: Medium;
+font-size: 24px;
+line-height: 100%;
+letter-spacing: 0%;
+margin-left: 10px;
+margin-bottom: 0px;
+}
+.contentdivBooking {
+    font-family: "poppins" , sans-serif;
+font-weight: 400;
+font-style: Regular;
+font-size: 16px;
+line-height: 100%;
+letter-spacing: 0%;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+margin-left: 5px;
+}
+
+.contentdivBooking p {
+    margin-left: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.hospitalcard {
+    background: #FFFFFF;
+    width: 785px;
+height: 268px;
+border-radius: 15px;
+padding: 24px;
+gap: 14px;
+display: flex;
+
+}
+
+.bookCenter {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin-top: 150px;
+}
+
+.mainCard {
+    display: flex;
+    width: 785px;
+    /* height: 268px; */
+    border-radius: 15px;
+    /* padding: 24px; */
+    padding-top: 24px;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-bottom: 24px;
+    gap: 14px;
+    background-color: #FFFFFF;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+
+.secondContainer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    /* gap: 14px; */
+}
+
+.textContent {
+    /* margin-top: 50px; */
+}
+
+.textContent h3{
+    font-family: "poppins", sans-serif;
+font-weight: 600;
+font-style: SemiBold;
+font-size: 20px;
+line-height: 28px;
+letter-spacing: 0%;
+color: #14BEF0;
+margin-bottom: 0px;
+}
+.textContent span {
+    font-family: "poppins", sans-serif;
+font-weight: 400;
+font-style: Regular;
+font-size: 14px;
+line-height: 19.6px;
+letter-spacing: 0%;
+vertical-align: middle;
+
+}
+
+.mainDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.mainContent {
+    display: flex;
+    gap: 20px;
+}
+
+.advertise {
+    border-radius: 15px;
+    object-fit: cover;
+    object-position: left;
+    margin-top: 20px;
+    width: 420px;
+    height: 268px;
+}
+
+@media screen and (max-width: 1300px) {
+    .mainCard {
+        width: 585px;
+    }
+}
+@media screen and (max-width: 1100px) {
+    .mainCard {
+        width: 485px;
+    }
+    .mainCard {
+        flex-direction: column;
+    }
+}
+@media screen and (max-width: 1000px) {
+    .secondContainer {
+        flex-direction: column;
+    }
+    .bookCenter {
+        margin-top: 0px;
+    }
+    .mainCard {
+        width: 420px;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .mainCard {
+        width: 340px;
+    }
+}
+@media screen and (max-width: 850px) {
+    .mainCard {
+        width: 300px;
+    }
+}
+@media screen and (max-width: 800px) {
+    .mainCard {
+        width: 100%;
+    }
+    .mainContent {
+        flex-direction: column;
+        align-items: center;
+    }
+    .mainDiv {
+        align-items: center;
+
+    }
+    .hospitalcard {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .mainCard {
+        padding-left: 0;
+        padding-right: 0;
+        text-align: center;
+    }
+    .secondContainer {
+        align-items: center;
+    }
+    .textContent {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .mainCard {
+        /* width: 90%; */
+    }
+    .hospitalcard {
+        display: flex;
+        justify-content: center;
+    }
+    .mainDiv {
+        align-items: center;
+        text-align: center;
+    }
+    .contentdivBooking {
+        flex-direction: column;
+        margin-top: 20px;
+    }
+    .contentdivBooking p{
+        margin-left: 5px;
+    }
+    .contentText {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .mainDiv {
+        width: 90%;
+    }
+    .secondContainer {
+        width: 90%;
+    }
+    .mainCard {
+        width: 100%;
+    }
+    .advertise{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .mainDiv {
+        width: 90%;
+    }
+}
