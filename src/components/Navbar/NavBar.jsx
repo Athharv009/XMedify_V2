@@ -54,14 +54,12 @@ export default function NavBar () {
                 </div>
                 </Link>
                 
-                {/* The hamburger button, only visible on mobile */}
                 <button className={styles.hamburger} onClick={toggleMenu} aria-expanded={isMenuOpen}>
                     <div className={styles.bar}></div>
                     <div className={styles.bar}></div>
                     <div className={styles.bar}></div>
                 </button>
 
-                {/* The tabs section, which will be toggled on mobile */}
                 <div className={`${styles.tabsSection} ${isMenuOpen ? styles.tabsOpen : ''}`}>
                     <ul className={styles.tabsList}>
                         <li><Link to='/find-doctors' style={{textDecoration: "none", color: "#102851"}}>Find Doctors</Link></li>
