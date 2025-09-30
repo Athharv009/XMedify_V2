@@ -20,7 +20,7 @@ const Card = ({
   };
 
   return (
-    <div className={styles.mainCardDi}>
+    <div className={styles.mainCardDiv}>
       <div
         className={`${styles.mainCard} ${
           bookingClick ? styles.openBooking : null
