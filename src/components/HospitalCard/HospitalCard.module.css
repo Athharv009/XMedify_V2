@@ -49,6 +49,11 @@ display: flex;
     margin-top: 150px;
 }
 
+.openBooking {
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+} 
+
 .mainCard {
     display: flex;
     width: 785px;
@@ -64,6 +69,7 @@ display: flex;
     align-items: flex-start;
     justify-content: space-evenly;
     margin-top: 20px;
+    
 }
 
 .secondContainer {
@@ -118,13 +124,28 @@ vertical-align: middle;
     height: 268px;
 }
 
+.bookingOpen {
+    background: #FFFFFF;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    /* padding-bottom: 20px;
+    padding-top: 10px; */
+    padding: 24px;
+}
+
+.bookingOpen h3 {
+    margin-top: 0px;
+}
+
+
+
 @media screen and (max-width: 1300px) {
-    .mainCard {
+    .mainCard, .bookingOpen {
         width: 585px;
     }
 }
 @media screen and (max-width: 1100px) {
-    .mainCard {
+    .mainCard, .bookingOpen {
         width: 485px;
     }
     .mainCard {
@@ -142,15 +163,18 @@ vertical-align: middle;
         width: 420px;
         align-items: center;
     }
+    .bookingOpen {
+        width: 420px;
+    }
 }
 
 @media screen and (max-width: 950px) {
-    .mainCard {
+    .mainCard, .bookingOpen {
         width: 340px;
     }
 }
 @media screen and (max-width: 850px) {
-    .mainCard {
+    .mainCard, .bookingOpen {
         width: 300px;
     }
 }
@@ -237,4 +261,90 @@ vertical-align: middle;
     .mainDiv {
         width: 90%;
     }
+}
+
+/*  */
+
+.dateTabs {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+  border-bottom: 2px solid #eee;
+  overflow-x: auto;
+}
+
+.dateTab {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: "poppins", sans-serif;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.dateTab:hover {
+  background: #f2f9ff;
+}
+
+.activeTab {
+  border-bottom: 3px solid #14BEF0;
+  font-weight: 600;
+  color: #14BEF0;
+}
+
+.slotsAvailable {
+  display: block;
+  font-size: 12px;
+  color: green;
+  margin-top: 4px;
+}
+
+.slotGroup {
+  margin: 15px 0;
+}
+
+.slotGroup h4 {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #333;
+}
+
+.slotGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.slotBtn {
+  border: 1px solid #14BEF0;
+  background: #fff;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.slotBtn:hover {
+  background: #f2f9ff;
+}
+
+.active {
+  background: #2AA7FF;
+  color: #fff;
+}
+
+.confirmBtn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background: #2AA7FF;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
 }
