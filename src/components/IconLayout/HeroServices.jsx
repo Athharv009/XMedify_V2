@@ -117,6 +117,7 @@ export default function HeroServices() {
               <div
                 className={styles.autocompleteWrapper}
                 ref={stateSuggestionsRef}
+                id="state"
               >
                 <input
                   placeholder="State"
@@ -154,6 +155,7 @@ export default function HeroServices() {
                 <div
                   className={styles.autocompleteWrapper}
                   ref={citySuggestionsRef}
+                  id="city"
                 >
                   <input
                     placeholder="City"

@@ -8,17 +8,17 @@ import FAQs from "../components/Sections/FAQs/FAQs";
 import Footer from "../components/Footer/Footer";
 
 export default function FindDoctors() {
+  const location = useLocation();
+
   const [storeState, setStoreState] = useState("");
   const [storeCity, setStoreCity] = useState("");
   const [displayHospitalCard, setDisplayHospitalCard] = useState(false);
 
-  const location = useLocation();
-
-  // Prefill state/city if URL params exist
+  // Read URL params if coming from HeroServices
   useEffect(() => {
     const params = new URLSearchParams(location.search);
-    const stateParam = params.get("state") || "";
-    const cityParam = params.get("city") || "";
+    const stateParam = params.get("state");
+    const cityParam = params.get("city");
 
     if (stateParam && cityParam) {
       setStoreState(stateParam);
@@ -34,16 +34,16 @@ export default function FindDoctors() {
 
       <div className={styles.searchbarContent}>
         <SearchBar
-          initialState={storeState}
-          initialCity={storeCity}
           setStoreState={setStoreState}
           setStoreCity={setStoreCity}
           setDisplayHospitalCard={setDisplayHospitalCard}
+          initialState={storeState}
+          initialCity={storeCity}
         />
       </div>
 
       <div className={styles.mainContentDiv}>
-        {displayHospitalCard && (
+        {displayHospitalCard && storeState && storeCity && (
           <HospitalCard storeState={storeState} storeCity={storeCity} />
         )}
       </div>

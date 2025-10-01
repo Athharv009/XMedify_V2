@@ -3,24 +3,22 @@ import styles from "./SearchBar.module.css";
 import axios from "axios";
 import useDebounce from "../../hooks/useDebounce";
 import { useSnackbar } from "notistack";
-import { useNavigate } from "react-router-dom";
 
 export default function SearchBar({
-  initialState = "",
-  initialCity = "",
   setStoreState,
   setStoreCity,
   setDisplayHospitalCard,
+  initialState = "",
+  initialCity = "",
 }) {
   const { enqueueSnackbar } = useSnackbar();
-  const navigate = useNavigate();
 
   const [stateInput, setStateInput] = useState(initialState);
   const [cityInput, setCityInput] = useState(initialCity);
-  const [allStates, setAllStates] = useState([]);
-  const [allCities, setAllCities] = useState([]);
   const [suggestionsState, setSuggestionsState] = useState([]);
   const [suggestionsCity, setSuggestionsCity] = useState([]);
+  const [allStates, setAllStates] = useState([]);
+  const [allCities, setAllCities] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const debouncedInputState = useDebounce(stateInput, 500);
@@ -37,19 +35,23 @@ export default function SearchBar({
       .catch((err) => console.error("Error fetching States: ", err));
   }, []);
 
-  // Close suggestions when clicking outside
+  // Fetch cities if state is pre-filled
+  useEffect(() => {
+    if (initialState) {
+      axios
+        .get(`https://meddata-backend.onrender.com/cities/${initialState}`)
+        .then((res) => setAllCities(res.data))
+        .catch((err) => console.error("Error fetching Cities: ", err));
+    }
+  }, [initialState]);
+
+  // Close dropdowns when clicking outside
   useEffect(() => {
     function handleClickOutside(event) {
-      if (
-        stateSuggestionsRef.current &&
-        !stateSuggestionsRef.current.contains(event.target)
-      ) {
+      if (stateSuggestionsRef.current && !stateSuggestionsRef.current.contains(event.target)) {
         setSuggestionsState([]);
       }
-      if (
-        citySuggestionsRef.current &&
-        !citySuggestionsRef.current.contains(event.target)
-      ) {
+      if (citySuggestionsRef.current && !citySuggestionsRef.current.contains(event.target)) {
         setSuggestionsCity([]);
       }
     }
@@ -57,7 +59,7 @@ export default function SearchBar({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Filter states for suggestions
+  // Filter state suggestions
   useEffect(() => {
     if (debouncedInputState.length > 0) {
       setLoading(true);
@@ -71,7 +73,23 @@ export default function SearchBar({
     }
   }, [debouncedInputState, allStates]);
 
-  // Filter cities for suggestions
+  const handleInputChangeState = (e) => setStateInput(e.target.value);
+
+  const handleSelectState = (state) => {
+    setStateInput(state);
+    setStoreState(state);
+    setSuggestionsState([]);
+
+    axios
+      .get(`https://meddata-backend.onrender.com/cities/${state}`)
+      .then((res) => setAllCities(res.data))
+      .catch((err) => console.error("Error fetching Cities: ", err));
+
+    setCityInput("");
+    setStoreCity("");
+  };
+
+  // Filter city suggestions
   useEffect(() => {
     if (debouncedInputCity.length > 0 && stateInput.trim() !== "") {
       setLoading(true);
@@ -85,26 +103,14 @@ export default function SearchBar({
     }
   }, [debouncedInputCity, allCities, stateInput]);
 
-  // Fetch cities when state is selected
-  const handleSelectState = (state) => {
-    setStateInput(state);
-    setStoreState(state);
-    setSuggestionsState([]);
-    setCityInput("");
-    setStoreCity("");
-
-    axios
-      .get(`https://meddata-backend.onrender.com/cities/${state}`)
-      .then((res) => setAllCities(res.data))
-      .catch((err) => console.error("Error fetching Cities: ", err));
-  };
-
+  const handleInputChangeCity = (e) => setCityInput(e.target.value);
   const handleSelectCity = (city) => {
     setCityInput(city);
     setStoreCity(city);
     setSuggestionsCity([]);
   };
 
+  // Handle search button click
   const handleSearch = (e) => {
     e.preventDefault();
 
@@ -119,10 +125,9 @@ export default function SearchBar({
       return;
     }
 
-    // Update URL with state/city
-    navigate(`/find-doctors?state=${encodeURIComponent(stateInput)}&city=${encodeURIComponent(cityInput)}`);
-
     enqueueSnackbar("Searching hospitals...", { variant: "success" });
+    setStoreState(stateInput);
+    setStoreCity(cityInput);
     setDisplayHospitalCard(true);
   };
 
@@ -135,7 +140,7 @@ export default function SearchBar({
           placeholder="State"
           className={styles.searchInputState}
           value={stateInput}
-          onChange={(e) => setStateInput(e.target.value)}
+          onChange={handleInputChangeState}
           required
         />
         {(loading || suggestionsState.length > 0) && (
@@ -153,14 +158,14 @@ export default function SearchBar({
         )}
       </div>
 
-      <div className={styles.searchCity} id="city" ref={citySuggestionsRef}>
+      <div className={styles.searchCity}  ref={citySuggestionsRef} id="city">
         <img src={require("../../assets/locator.png")} alt="location" height="24" width="24" />
         <input
           type="text"
           placeholder="City"
           className={styles.searchInputCity}
           value={cityInput}
-          onChange={(e) => setCityInput(e.target.value)}
+          onChange={handleInputChangeCity}
           required
         />
         {(loading || suggestionsCity.length > 0) && (
