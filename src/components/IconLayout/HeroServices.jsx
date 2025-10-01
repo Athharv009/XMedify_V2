@@ -140,7 +140,7 @@ export default function HeroServices() {
                 src={require("../../assets/search-icn.png")}
                 alt="search icon"
               />
-              <div className={styles.autocompleteWrapper} ref={stateSuggestionsRef}>
+              <div className={styles.autocompleteWrapper} ref={stateSuggestionsRef} id="state">
                 <input
                   placeholder="State"
                   type="text"
@@ -174,7 +174,7 @@ export default function HeroServices() {
                   src={require("../../assets/search-icn.png")}
                   alt="search icon"
                 />
-                <div className={styles.autocompleteWrapper} ref={citySuggestionsRef}>
+                <div className={styles.autocompleteWrapper} ref={citySuggestionsRef} id="city">
                   <input
                     placeholder="City"
                     type="text"
@@ -202,6 +202,7 @@ export default function HeroServices() {
               </div>
               <button 
                 className={styles.btnSearch}
+                type="button"
                 onClick={handleSearch}
               >
                 <span>
