@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import HospitalCard from "../components/HospitalCard/HospitalCard";
 import NavBar from "../components/Navbar/NavBar";
 import SearchBar from "../components/SearchBar/SearchBar";
@@ -11,6 +12,21 @@ export default function FindDoctors() {
   const [storeCity, setStoreCity] = useState("");
   const [displayHospitalCard, setDisplayHospitalCard] = useState(false);
 
+  const location = useLocation();
+
+  // Prefill state/city if URL params exist
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const stateParam = params.get("state") || "";
+    const cityParam = params.get("city") || "";
+
+    if (stateParam && cityParam) {
+      setStoreState(stateParam);
+      setStoreCity(cityParam);
+      setDisplayHospitalCard(true);
+    }
+  }, [location.search]);
+
   return (
     <div className={styles.mainContainer}>
       <NavBar />
@@ -18,6 +34,8 @@ export default function FindDoctors() {
 
       <div className={styles.searchbarContent}>
         <SearchBar
+          initialState={storeState}
+          initialCity={storeCity}
           setStoreState={setStoreState}
           setStoreCity={setStoreCity}
           setDisplayHospitalCard={setDisplayHospitalCard}
@@ -29,14 +47,11 @@ export default function FindDoctors() {
           <HospitalCard storeState={storeState} storeCity={storeCity} />
         )}
       </div>
-      <div
-        style={{ background: "white", marginTop: "90px", paddingTop: "20px" }}
-      >
+
+      <div style={{ background: "white", marginTop: "90px", paddingTop: "20px" }}>
         <FAQs />
       </div>
-      <div>
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 }

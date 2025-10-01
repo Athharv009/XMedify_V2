@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import IconCard from "../IconCard/IconCard";
 import styles from "./HeroServices.module.css";
 import axios from "axios";
-import useDebounce from "../../hooks/useDebounce"; // Import the custom hook
+import useDebounce from "../../hooks/useDebounce";
 import { useNavigate } from "react-router";
 
 export default function HeroServices() {
@@ -10,16 +10,26 @@ export default function HeroServices() {
   const [cityInput, setCityInput] = useState("");
   const [suggestionsState, setSuggestionsState] = useState([]);
   const [suggestionsCity, setSuggestionsCity] = useState([]);
+  const [allStates, setAllStates] = useState([]);
+  const [allCities, setAllCities] = useState([]);
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
-  const debouncedInputState = useDebounce(stateInput, 500); // 500ms debounce delay
-  const debouncedInputCity = useDebounce(cityInput, 500); // 500ms debounce delay
+  const navigate = useNavigate();
+  const debouncedInputState = useDebounce(stateInput, 500);
+  const debouncedInputCity = useDebounce(cityInput, 500);
 
   const stateSuggestionsRef = useRef(null);
   const citySuggestionsRef = useRef(null);
 
-  // Close state suggestions when clicking outside
+  // Fetch all states on mount
+  useEffect(() => {
+    axios
+      .get(`https://meddata-backend.onrender.com/states`)
+      .then((res) => setAllStates(res.data))
+      .catch((err) => console.error("Error fetching States: ", err));
+  }, []);
+
+  // Close suggestions when clicking outside
   useEffect(() => {
     function handleClickOutside(event) {
       if (
@@ -27,18 +37,7 @@ export default function HeroServices() {
         !stateSuggestionsRef.current.contains(event.target)
       ) {
         setSuggestionsState([]);
-        setSuggestionsCity([]);
       }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
-  // Close city suggestions when clicking outside
-  useEffect(() => {
-    function handleClickOutside(event) {
       if (
         citySuggestionsRef.current &&
         !citySuggestionsRef.current.contains(event.target)
@@ -47,106 +46,84 @@ export default function HeroServices() {
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Fetch states
+  // Filter state suggestions
   useEffect(() => {
     if (debouncedInputState.length > 0) {
       setLoading(true);
-      axios
-        .get(`https://meddata-backend.onrender.com/states`)
-        .then((res) => {
-          const filtered = res.data.filter((item) =>
-            item.toLowerCase().startsWith(debouncedInputState.toLowerCase())
-          );
-          setSuggestionsState(filtered);
-          setLoading(false);
-        })
-        .catch((err) => {
-          console.error("Error fetching States: ", err);
-          setLoading(false);
-        });
+      const filtered = allStates.filter((item) =>
+        item.toLowerCase().startsWith(debouncedInputState.toLowerCase())
+      );
+      setSuggestionsState(filtered);
+      setLoading(false);
     } else {
       setSuggestionsState([]);
     }
-  }, [debouncedInputState]);
-
-  const handleStateInputChange = (e) => {
-    setStateInput(e.target.value);
-  };
+  }, [debouncedInputState, allStates]);
 
   const handleSelectState = (state) => {
     setStateInput(state);
-    setSuggestionsState([]); // Clear suggestions after selection
+    setSuggestionsState([]);
+    setCityInput("");
+    setAllCities([]);
+    // Fetch cities for this state
+    axios
+      .get(`https://meddata-backend.onrender.com/cities/${state}`)
+      .then((res) => setAllCities(res.data))
+      .catch((err) => console.error("Error fetching Cities: ", err));
   };
 
-  // Fetch cities for selected state
+  // Filter city suggestions
   useEffect(() => {
     if (debouncedInputCity.length > 0 && stateInput.trim() !== "") {
       setLoading(true);
-      axios
-        .get(`https://meddata-backend.onrender.com/cities/${stateInput}`)
-        .then((res) => {
-          const filtered = res.data.filter((item) =>
-            item.toLowerCase().startsWith(debouncedInputCity.toLowerCase())
-          );
-          setSuggestionsCity(filtered);
-          setLoading(false);
-        })
-        .catch((err) => {
-          console.error("Error fetching Cities: ", err);
-          setLoading(false);
-        });
+      const filtered = allCities.filter((item) =>
+        item.toLowerCase().startsWith(debouncedInputCity.toLowerCase())
+      );
+      setSuggestionsCity(filtered);
+      setLoading(false);
     } else {
       setSuggestionsCity([]);
     }
-  }, [debouncedInputCity, stateInput]);
-
-  const handleCityInputChange = (e) => {
-    setCityInput(e.target.value);
-  };
+  }, [debouncedInputCity, allCities, stateInput]);
 
   const handleSelectCity = (city) => {
     setCityInput(city);
-    setSuggestionsCity([]); // Clear suggestions after selection
+    setSuggestionsCity([]);
   };
 
-  let navigateTrue = false;
-
-  if(stateInput && cityInput) {
-    navigateTrue = true;
-  }
-  else {
-    navigateTrue = false;
-  }
-
   const handleSearch = () => {
-    if(navigateTrue) {
-      navigate('/find-doctors')
-    }
-  }
+    if (!stateInput || !cityInput) return;
+    navigate(
+      `/find-doctors?state=${encodeURIComponent(
+        stateInput
+      )}&city=${encodeURIComponent(cityInput)}`
+    );
+  };
 
   return (
     <div className={styles.mainContainer}>
       <div className={styles.heroServicesMain}>
         <div className={styles.servicesContainer}>
-          <form className={styles.servicesMain}>
+          <div className={styles.servicesMain}>
             {/* State Input */}
             <div className={styles.service}>
               <img
                 src={require("../../assets/search-icn.png")}
                 alt="search icon"
               />
-              <div className={styles.autocompleteWrapper} ref={stateSuggestionsRef} id="state">
+              <div
+                className={styles.autocompleteWrapper}
+                ref={stateSuggestionsRef}
+              >
                 <input
                   placeholder="State"
                   type="text"
                   required
-                  onChange={handleStateInputChange}
                   value={stateInput}
+                  onChange={(e) => setStateInput(e.target.value)}
                 />
                 {(loading || suggestionsState.length > 0) && (
                   <ul className={styles.suggestionsList}>
@@ -174,13 +151,16 @@ export default function HeroServices() {
                   src={require("../../assets/search-icn.png")}
                   alt="search icon"
                 />
-                <div className={styles.autocompleteWrapper} ref={citySuggestionsRef} id="city">
+                <div
+                  className={styles.autocompleteWrapper}
+                  ref={citySuggestionsRef}
+                >
                   <input
                     placeholder="City"
                     type="text"
                     required
-                    onChange={handleCityInputChange}
                     value={cityInput}
+                    onChange={(e) => setCityInput(e.target.value)}
                   />
                   {(loading || suggestionsCity.length > 0) && (
                     <ul className={styles.suggestionsList}>
@@ -200,7 +180,7 @@ export default function HeroServices() {
                   )}
                 </div>
               </div>
-              <button 
+              <button
                 className={styles.btnSearch}
                 type="button"
                 onClick={handleSearch}
@@ -214,7 +194,7 @@ export default function HeroServices() {
                 Search
               </button>
             </div>
-          </form>
+          </div>
           <IconCard />
         </div>
       </div>
