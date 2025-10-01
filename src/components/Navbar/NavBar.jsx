@@ -69,7 +69,9 @@ export default function NavBar () {
                         <li>Software for Provider</li>
                         <li>Facilities</li>
                     </ul>
+                    <Link to='/my-bookings'>
                     <button className={styles.btnBooking}>My Bookings</button>
+                    </Link>
                 </div>
             </div>
         </div>

@@ -1,0 +1,298 @@
+.mainContainer {
+  background: linear-gradient(
+    81deg,
+    #e7f0ff 9.01%,
+    rgba(232, 241, 255, 0.47) 89.11%
+  );
+}
+
+.designContainer {
+  width: 100%;
+  height: 110px;
+  opacity: 1;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  background: linear-gradient(91.75deg, #2aa7ff 1.4%, #0c8ce6 100.57%);
+  z-index: 1;
+}
+
+.myBookingsContainer {
+    display: flex;
+    justify-content: space-around;
+    z-index: 2;
+    margin-top: -80px;
+    align-items: center;
+}
+
+.myBookingsContainer h1 {
+    color: white;
+    font-family: "Ubuntu", sans-serif;
+font-weight: 700;
+font-style: Bold;
+font-size: 40px;
+line-height: 100%;
+letter-spacing: 0%;
+
+}
+
+.mainCard {
+  display: flex;
+  width: 785px;
+  border-radius: 15px;
+  padding: 24px;
+  gap: 20px;
+  background-color: #ffffff;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+
+.secondContainer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  gap: 20px;
+}
+
+.textContent h3 {
+  font-family: "poppins", sans-serif;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 0%;
+  color: #14bef0;
+  margin-bottom: 0px;
+}
+.textContent span {
+  font-family: "poppins", sans-serif;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 14px;
+  line-height: 19.6px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+}
+
+.time {
+  width: 84px;
+  height: 31.59000015258789px;
+  opacity: 1;
+  top: 63px;
+  left: 525.55px;
+  border-radius: 3px;
+  border-width: 1px;
+  border: 1px solid #2aa7ff;
+  font-family: "lato", sans-serif;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 14px;
+  line-height: 19.6px;
+  letter-spacing: 0%;
+  color: #2aa7ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.date {
+    width: 128px;
+height: 32px;
+opacity: 1;
+top: 63px;
+left: 623.55px;
+border-radius: 3px;
+border-width: 1px;
+border: 1px solid #00A500;
+font-family: "lato", sans-serif;
+font-weight: 700;
+font-style: Bold;
+font-size: 14px;
+line-height: 19.6px;
+letter-spacing: 0%;
+color: #007100;
+ display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dateTime {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.advertise {
+  border-radius: 15px;
+  object-fit: cover;
+  object-position: left;
+  margin-top: 20px;
+  width: 420px;
+  height: 268px;
+}
+
+.mainContent {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 100px;
+}
+.hospitalcard {
+  background: #ffffff;
+  width: 785px;
+  height: 268px;
+  border-radius: 15px;
+  padding: 24px;
+  gap: 14px;
+  display: flex;
+}
+
+.searchInp {
+    /* style={{width: "60%"}} */
+    width: 60%;
+}
+
+@media screen and (max-width: 1300px) {
+  .mainCard,
+  .bookingOpen {
+    width: 585px;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .mainCard,
+  .bookingOpen {
+    width: 485px;
+  }
+  .mainCard {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .secondContainer {
+    flex-direction: column;
+  }
+  .bookCenter {
+    margin-top: 0px;
+  }
+  .mainCard,
+  .bookingOpen {
+    width: 420px;
+  }
+  .mainCard {
+    align-items: center;
+  }
+}
+@media screen and (max-width: 950px) {
+  .mainCard,
+  .bookingOpen {
+    width: 340px;
+  }
+}
+@media screen and (max-width: 850px) {
+  .mainCard,
+  .bookingOpen {
+    width: 300px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .mainCard {
+    width: 100%;
+  }
+  .mainContent {
+    flex-direction: column;
+    align-items: center;
+  }
+  .mainDiv {
+    align-items: center;
+  }
+  .hospitalcard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .mainCardDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .textContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .secondContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 750px) {
+  .mainCard {
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+  }
+  .secondContainer {
+    align-items: center;
+  }
+  .textContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .bookingOpen {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .myBookingsContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  .searchInp {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .hospitalcard {
+    display: flex;
+    justify-content: center;
+  }
+  .mainDiv {
+    align-items: center;
+    text-align: center;
+  }
+  .contentdivBooking {
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  .contentdivBooking p {
+    margin-left: 5px;
+  }
+  .contentText {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 450px) {
+  .mainDiv,
+  .secondContainer {
+    width: 90%;
+  }
+  .mainCard {
+    width: 100%;
+  }
+  .advertise {
+    width: 100%;
+  }
+  .searchInp {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .mainDiv {
+    width: 90%;
+  }
+}

@@ -14,9 +14,33 @@ const Card = ({
   const [bookingClick, setBookingClick] = useState(false);
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedSlot, setSelectedSlot] = useState("");
+  const [startIndex, setStartIndex] = useState(0); // track which 3 dates are shown
 
   const handleConfirm = () => {
+    const booking = {
+      hospitalName,
+      address,
+      city,
+      state,
+      zipCode,
+      rating,
+      hospitalType,
+      date: selectedDate,
+      time: selectedSlot,
+    };
+
+    // get existing bookings or empty array
+    const existingBookings =
+      JSON.parse(localStorage.getItem("bookings")) || [];
+
+    // push new booking
+    existingBookings.push(booking);
+
+    // save to localStorage
+    localStorage.setItem("bookings", JSON.stringify(existingBookings));
+
     alert(`Booking confirmed on ${selectedDate} at ${selectedSlot}`);
+    setBookingClick(false); // close booking panel
   };
 
   return (
@@ -26,6 +50,7 @@ const Card = ({
           bookingClick ? styles.openBooking : null
         }`}
       >
+        {/* hospital info (unchanged) */}
         <div style={{ display: "flex" }}>
           <div
             style={{
@@ -60,6 +85,7 @@ const Card = ({
           />
         </div>
         <div className={styles.secondContainer}>
+          {/* text content unchanged */}
           <div className={styles.textContent}>
             <h3>{hospitalName}</h3>
             <div style={{ display: "flex", flexDirection: "column" }}>
@@ -182,109 +208,160 @@ const Card = ({
           </div>
         </div>
       </div>
+
       <div className={`${bookingClick ? styles.bookingOpen : null}`}>
         {/* Booking Section */}
-{bookingClick && (
-  <div className={styles.bookingContent}>
-    <h3 className={styles.bookingTitle}>Book Your Appointment</h3>
+        {bookingClick && (
+          <div className={styles.bookingContent}>
+            <h3 className={styles.bookingTitle}>Book Your Appointment</h3>
 
-    {/* Calendar (next 7 days) */}
-    <div className={styles.dateTabs}>
-      {[...Array(7)].map((_, i) => {
-        const date = new Date();
-        date.setDate(date.getDate() + i);
-        const dayName = date.toLocaleDateString("en-US", {
-          weekday: "short",
-        });
-        const dayNum = date.getDate();
-        const month = date.toLocaleDateString("en-US", { month: "short" });
-
-        const dateKey = date.toISOString().split("T")[0]; // YYYY-MM-DD
-
-        return (
-          <button
-            key={dateKey}
-            className={`${styles.dateTab} ${
-              selectedDate === dateKey ? styles.activeTab : ""
-            }`}
-            onClick={() => setSelectedDate(dateKey)}
-          >
-            <div>{i === 0 ? "Today" : i === 1 ? "Tomorrow" : `${dayName}, ${dayNum} ${month}`}</div>
-            <span className={styles.slotsAvailable}>
-              {Math.floor(Math.random() * 10) + 10} Slots Available
-            </span>
-          </button>
-        );
-      })}
-    </div>
-
-    {/* Time Slots */}
-    {selectedDate && (
-      <div className={styles.timeSlots}>
-        <div className={styles.slotGroup}>
-          <h4>Morning</h4>
-          <div className={styles.slotGrid}>
-            {["09:30 AM", "10:00 AM", "11:30 AM"].map((slot) => (
+            {/* Calendar (next 7 days, 3 at a time with arrows) */}
+            <div className={styles.dateTabsWrapper}>
               <button
-                key={slot}
-                className={`${styles.slotBtn} ${
-                  selectedSlot === slot ? styles.active : ""
-                }`}
-                onClick={() => setSelectedSlot(slot)}
+                className={styles.arrowBtn}
+                onClick={() => setStartIndex(Math.max(0, startIndex - 3))}
+                disabled={startIndex === 0}
               >
-                {slot}
+                <img src={require('../../assets/leftArrow.png')} alt="Left Arrow" width={'20px'} height={'20px'}/>
               </button>
-            ))}
-          </div>
-        </div>
 
-        <div className={styles.slotGroup}>
-          <h4>Afternoon</h4>
-          <div className={styles.slotGrid}>
-            {["12:00 PM", "12:30 PM", "01:30 PM", "02:00 PM", "02:30 PM"].map(
-              (slot) => (
-                <button
-                  key={slot}
-                  className={`${styles.slotBtn} ${
-                    selectedSlot === slot ? styles.active : ""
-                  }`}
-                  onClick={() => setSelectedSlot(slot)}
-                >
-                  {slot}
-                </button>
-              )
+              <div className={styles.dateTabs}>
+                {[...Array(7)].slice(startIndex, startIndex + 3).map((_, i) => {
+                  const date = new Date();
+                  date.setDate(date.getDate() + (i + startIndex));
+                  const dayName = date.toLocaleDateString("en-US", {
+                    weekday: "short",
+                  });
+                  const dayNum = date.getDate();
+                  const month = date.toLocaleDateString("en-US", {
+                    month: "short",
+                  });
+
+                  const dateKey = date.toISOString().split("T")[0]; // YYYY-MM-DD
+
+                  return (
+                    <button
+                      key={dateKey}
+                      className={`${styles.dateTab} ${
+                        selectedDate === dateKey ? styles.activeTab : ""
+                      }`}
+                      onClick={() => setSelectedDate(dateKey)}
+                    >
+                      <p>
+                        {i + startIndex === 0
+                          ? "Today"
+                          : i + startIndex === 1
+                          ? "Tomorrow"
+                          : `${dayName}, ${dayNum} ${month}`}
+                      </p>
+                      <span className={styles.slotsAvailable}>
+                        {Math.floor(Math.random() * 10) + 10} Slots Available
+                      </span>
+                    </button>
+                  );
+                })}
+
+                {/* Sliding underline */}
+                <div
+                  className={styles.activeUnderline}
+                  style={{
+                    transform: `translateX(${[...Array(7)]
+                      .slice(startIndex, startIndex + 3)
+                      .findIndex((_, i) => {
+                        const d = new Date();
+                        d.setDate(d.getDate() + (i + startIndex));
+                        return (
+                          d.toISOString().split("T")[0] === selectedDate
+                        );
+                      }) * 100}%)`,
+                  }}
+                />
+              </div>
+
+              <button
+                className={styles.arrowBtn}
+                onClick={() =>
+                  setStartIndex(Math.min(6, startIndex + 3)) // jump by 3
+                }
+                disabled={startIndex >= 6}
+              >
+                <img src={require('../../assets/rightArrow.png')} alt="RightArrow" width={'20px'} height={'20px'}/>
+              </button>
+            </div>
+            <div style={{marginLeft: "20px", marginRight: "20px"}}>
+            {/* Time Slots */}
+            {selectedDate && (
+              <div className={styles.timeSlots}>
+                <div className={styles.slotGroup}>
+                  <p>Morning</p>
+                  <div className={styles.slotGrid}>
+                    {["09:30 AM", "10:00 AM", "11:30 AM"].map((slot) => (
+                      <button
+                        key={slot}
+                        className={`${styles.slotBtn} ${
+                          selectedSlot === slot ? styles.active : ""
+                        }`}
+                        onClick={() => setSelectedSlot(slot)}
+                      >
+                        {slot}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className={styles.slotGroup}>
+                  <p>Afternoon</p>
+                  <div className={styles.slotGrid}>
+                    {[
+                      "12:00 PM",
+                      "12:30 PM",
+                      "01:30 PM",
+                      "02:00 PM",
+                      "02:30 PM",
+                    ].map((slot) => (
+                      <button
+                        key={slot}
+                        className={`${styles.slotBtn} ${
+                          selectedSlot === slot ? styles.active : ""
+                        }`}
+                        onClick={() => setSelectedSlot(slot)}
+                      >
+                        {slot}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className={styles.slotGroup}>
+                  <p>Evening</p>
+                  <div className={styles.slotGrid}>
+                    {["06:00 PM", "06:30 PM", "07:00 PM", "07:30 PM"].map(
+                      (slot) => (
+                        <button
+                          key={slot}
+                          className={`${styles.slotBtn} ${
+                            selectedSlot === slot ? styles.active : ""
+                          }`}
+                          onClick={() => setSelectedSlot(slot)}
+                        >
+                          {slot}
+                        </button>
+                      )
+                    )}
+                  </div>
+                </div>
+              </div>
             )}
-          </div>
-        </div>
 
-        <div className={styles.slotGroup}>
-          <h4>Evening</h4>
-          <div className={styles.slotGrid}>
-            {["06:00 PM", "06:30 PM", "07:00 PM", "07:30 PM"].map((slot) => (
-              <button
-                key={slot}
-                className={`${styles.slotBtn} ${
-                  selectedSlot === slot ? styles.active : ""
-                }`}
-                onClick={() => setSelectedSlot(slot)}
-              >
-                {slot}
+            {/* Confirm Button */}
+            {selectedDate && selectedSlot && (
+              <button className={styles.confirmBtn} onClick={handleConfirm}>
+                Confirm Booking
               </button>
-            ))}
+            )}
+            </div>
           </div>
-        </div>
-      </div>
-    )}
-
-    {/* Confirm Button */}
-    {selectedDate && selectedSlot && (
-      <button className={styles.confirmBtn} onClick={handleConfirm}>
-        Confirm Booking
-      </button>
-    )}
-  </div>
-)}
-
+        )}
       </div>
     </div>
   );
@@ -309,9 +386,9 @@ export default function HospitalCard({ storeState, storeCity }) {
   return (
     <div className={styles.mainDiv}>
       <div className={styles.contentText}>
-        <h2>
+        <h1>
           {medicalCenters.length} medical centers available in {storeState}
-        </h2>
+        </h1>
         <div className={styles.contentdivBooking}>
           <img
             src={require("../../assets/tickMark.png")}
@@ -336,7 +413,6 @@ export default function HospitalCard({ storeState, storeCity }) {
               state={center["State"]}
               zipCode={center["ZIP Code"]}
               rating={center["Hospital overall rating"]}
-              //   onBook={() => handleBook(center)}
             />
           ))}
         </div>

@@ -1,0 +1,73 @@
+.content {
+  display: flex;
+  align-items: center;
+  /* width: 780px; */
+  height: 104px;
+  opacity: 1;
+  border-radius: 15px;
+  gap: 10px;
+  box-shadow: 6px 6px 35px 0px #1028511c;
+  background: #ffffff;
+  justify-content: space-around;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.inputSearchHospital {
+  width: 70%;
+  height: 50px;
+  opacity: 1;
+  border-radius: 8px;
+  border-width: 1px;
+  background: #fafbfe;
+  border: 1px solid #f0f0f0;
+  color: #abb6c7;
+  display: flex;
+  align-items: center;
+}
+
+.inputSearchHospital input {
+  margin-left: 20px;
+  border: none;
+  width: 80%;
+  height: 40px;
+  font-family: "poppins", sans-serif;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 2%;
+}
+
+.btnSearch {
+  width: 25%;
+  height: 50px;
+  background: #2aa8ff;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  font-family: "poppins", sans-serif;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+@media screen and (max-width: 400px) {
+  .content {
+    flex-direction: column;
+    height: 150px;
+    gap: 0px;
+  }
+  .inputSearchHospital {
+    width: 90%;
+  }
+  .btnSearch {
+    width: 90%;
+  }
+}

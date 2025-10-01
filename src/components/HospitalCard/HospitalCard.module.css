@@ -1,296 +1,302 @@
 .contentText {
-    margin-top: 100px;
+  margin-top: 100px;
 }
 
-.contentText h2 {
-    font-family: "poppins", sans-serif;
-font-weight: 500;
-font-style: Medium;
-font-size: 24px;
-line-height: 100%;
-letter-spacing: 0%;
-margin-left: 10px;
-margin-bottom: 0px;
+.contentText h1 {
+  font-family: "poppins", sans-serif;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  margin-left: 10px;
+  margin-bottom: 0px;
 }
+
 .contentdivBooking {
-    font-family: "poppins" , sans-serif;
-font-weight: 400;
-font-style: Regular;
-font-size: 16px;
-line-height: 100%;
-letter-spacing: 0%;
-display: flex;
-justify-content: flex-start;
-align-items: center;
-margin-left: 5px;
+  font-family: "poppins", sans-serif;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 5px;
 }
 
 .contentdivBooking p {
-    margin-left: 30px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+  margin-left: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .hospitalcard {
-    background: #FFFFFF;
-    width: 785px;
-height: 268px;
-border-radius: 15px;
-padding: 24px;
-gap: 14px;
-display: flex;
-
+  background: #ffffff;
+  width: 785px;
+  height: 268px;
+  border-radius: 15px;
+  padding: 24px;
+  gap: 14px;
+  display: flex;
 }
 
 .bookCenter {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    margin-top: 150px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-top: 150px;
 }
 
 .openBooking {
   border-bottom-left-radius: 0px !important;
   border-bottom-right-radius: 0px !important;
-} 
+}
 
 .mainCard {
-    display: flex;
-    width: 785px;
-    /* height: 268px; */
-    border-radius: 15px;
-    /* padding: 24px; */
-    padding-top: 24px;
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-bottom: 24px;
-    gap: 14px;
-    background-color: #FFFFFF;
-    align-items: flex-start;
-    justify-content: space-evenly;
-    margin-top: 20px;
-    
+  display: flex;
+  width: 785px;
+  border-radius: 15px;
+  padding: 24px;
+  gap: 14px;
+  background-color: #ffffff;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  margin-top: 20px;
 }
 
 .secondContainer {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-evenly;
-    /* gap: 14px; */
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
 }
 
-.textContent {
-    /* margin-top: 50px; */
-}
-
-.textContent h3{
-    font-family: "poppins", sans-serif;
-font-weight: 600;
-font-style: SemiBold;
-font-size: 20px;
-line-height: 28px;
-letter-spacing: 0%;
-color: #14BEF0;
-margin-bottom: 0px;
+.textContent h3 {
+  font-family: "poppins", sans-serif;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 0%;
+  color: #14bef0;
+  margin-bottom: 0px;
 }
 .textContent span {
-    font-family: "poppins", sans-serif;
-font-weight: 400;
-font-style: Regular;
-font-size: 14px;
-line-height: 19.6px;
-letter-spacing: 0%;
-vertical-align: middle;
-
+  font-family: "poppins", sans-serif;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 14px;
+  line-height: 19.6px;
+  letter-spacing: 0%;
+  vertical-align: middle;
 }
 
 .mainDiv {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .mainContent {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  gap: 20px;
 }
 
 .advertise {
-    border-radius: 15px;
-    object-fit: cover;
-    object-position: left;
-    margin-top: 20px;
-    width: 420px;
-    height: 268px;
+  border-radius: 15px;
+  object-fit: cover;
+  object-position: left;
+  margin-top: 20px;
+  width: 420px;
+  height: 268px;
 }
 
 .bookingOpen {
-    background: #FFFFFF;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    /* padding-bottom: 20px;
-    padding-top: 10px; */
-    padding: 24px;
+  background: #ffffff;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  padding: 24px;
 }
 
 .bookingOpen h3 {
-    margin-top: 0px;
+  margin-top: 0px;
 }
 
+.bookingContent {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 
-
+/* Responsive main cards */
 @media screen and (max-width: 1300px) {
-    .mainCard, .bookingOpen {
-        width: 585px;
-    }
+  .mainCard,
+  .bookingOpen {
+    width: 585px;
+  }
 }
 @media screen and (max-width: 1100px) {
-    .mainCard, .bookingOpen {
-        width: 485px;
-    }
-    .mainCard {
-        flex-direction: column;
-    }
+  .mainCard,
+  .bookingOpen {
+    width: 485px;
+  }
+  .mainCard {
+    flex-direction: column;
+  }
 }
 @media screen and (max-width: 1000px) {
-    .secondContainer {
-        flex-direction: column;
-    }
-    .bookCenter {
-        margin-top: 0px;
-    }
-    .mainCard {
-        width: 420px;
-        align-items: center;
-    }
-    .bookingOpen {
-        width: 420px;
-    }
+  .secondContainer {
+    flex-direction: column;
+  }
+  .bookCenter {
+    margin-top: 0px;
+  }
+  .mainCard,
+  .bookingOpen {
+    width: 420px;
+  }
+  .mainCard {
+    align-items: center;
+  }
 }
-
 @media screen and (max-width: 950px) {
-    .mainCard, .bookingOpen {
-        width: 340px;
-    }
+  .mainCard,
+  .bookingOpen {
+    width: 340px;
+  }
 }
 @media screen and (max-width: 850px) {
-    .mainCard, .bookingOpen {
-        width: 300px;
-    }
+  .mainCard,
+  .bookingOpen {
+    width: 300px;
+  }
 }
 @media screen and (max-width: 800px) {
-    .mainCard {
-        width: 100%;
-    }
-    .mainContent {
-        flex-direction: column;
-        align-items: center;
-    }
-    .mainDiv {
-        align-items: center;
-
-    }
-    .hospitalcard {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .mainCardDiv {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    .textContent {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .secondContainer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+  .mainCard {
+    width: 100%;
+  }
+  .mainContent {
+    flex-direction: column;
+    align-items: center;
+  }
+  .mainDiv {
+    align-items: center;
+  }
+  .hospitalcard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .mainCardDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .textContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .secondContainer {
+    flex-direction: column;
+    align-items: center;
+  }
 }
-
 @media screen and (max-width: 750px) {
-    .mainCard {
-        padding-left: 0;
-        padding-right: 0;
-        text-align: center;
-    }
-    .secondContainer {
-        align-items: center;
-    }
-    .textContent {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-    .bookingOpen {
-        padding-left: 0px;
-        padding-right: 0px;
-    }
+  .mainCard {
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+  }
+  .secondContainer {
+    align-items: center;
+  }
+  .textContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .bookingOpen {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
 }
-
 @media screen and (max-width: 500px) {
-    .mainCard {
-        /* width: 90%; */
-    }
-    .hospitalcard {
-        display: flex;
-        justify-content: center;
-    }
-    .mainDiv {
-        align-items: center;
-        text-align: center;
-    }
-    .contentdivBooking {
-        flex-direction: column;
-        margin-top: 20px;
-    }
-    .contentdivBooking p{
-        margin-left: 5px;
-    }
-    .contentText {
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+  .hospitalcard {
+    display: flex;
+    justify-content: center;
+  }
+  .mainDiv {
+    align-items: center;
+    text-align: center;
+  }
+  .contentdivBooking {
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  .contentdivBooking p {
+    margin-left: 5px;
+  }
+  .contentText {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
-
 @media screen and (max-width: 450px) {
-    .mainDiv {
-        width: 90%;
-    }
-    .secondContainer {
-        width: 90%;
-    }
-    .mainCard {
-        width: 100%;
-    }
-    .advertise{
-        width: 100%;
-    }
+  .mainDiv,
+  .secondContainer {
+    width: 90%;
+  }
+  .mainCard {
+    width: 100%;
+  }
+  .advertise {
+    width: 100%;
+  }
 }
-
 @media screen and (max-width: 400px) {
-    .mainDiv {
-        width: 90%;
-    }
+  .mainDiv {
+    width: 90%;
+  }
 }
 
-/*  */
+/* ------------------- */
+/* Date Tabs (with arrows, 3 at once, responsive) */
+/* ------------------- */
+.dateTabsWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin: 15px 0;
+}
+
+.arrowBtn {
+  background: none;
+  border-radius: 24px;
+  width: 48px;
+  height: 48px;
+  border: 1px solid #e0e0e4;
+  cursor: pointer;
+}
+.arrowBtn:disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
 
 .dateTabs {
   display: flex;
   justify-content: space-between;
-  margin: 15px 0;
-  border-bottom: 2px solid #eee;
-  overflow-x: auto;
+  flex: 1;
+  max-width: 500px; /* keep only 3 visible */
+  position: relative;
+  overflow: hidden;
 }
 
 .dateTab {
@@ -310,9 +316,19 @@ vertical-align: middle;
 }
 
 .activeTab {
-  border-bottom: 3px solid #14BEF0;
   font-weight: 600;
-  color: #14BEF0;
+  color: black;
+}
+
+.activeUnderline {
+  position: absolute;
+  bottom: 0; /* sits exactly at the bottom */
+  height: 3px;
+  background-color: #14bef0;
+  width: calc(100% / 3); /* always 3 visible tabs */
+  transform: translateX(0%); /* JS will update this on click */
+  transition: transform 0.3s ease;
+  border-radius: 2px;
 }
 
 .slotsAvailable {
@@ -325,7 +341,6 @@ vertical-align: middle;
 .slotGroup {
   margin: 15px 0;
 }
-
 .slotGroup h4 {
   margin-bottom: 8px;
   font-size: 14px;
@@ -339,20 +354,18 @@ vertical-align: middle;
 }
 
 .slotBtn {
-  border: 1px solid #14BEF0;
+  border: 1px solid #14bef0;
   background: #fff;
   border-radius: 4px;
   padding: 8px 16px;
   cursor: pointer;
   font-size: 14px;
 }
-
 .slotBtn:hover {
   background: #f2f9ff;
 }
-
 .active {
-  background: #2AA7FF;
+  background: #2aa7ff;
   color: #fff;
 }
 
@@ -360,11 +373,41 @@ vertical-align: middle;
   margin-top: 20px;
   width: 100%;
   padding: 12px;
-  background: #2AA7FF;
+  background: #2aa7ff;
   border: none;
   border-radius: 6px;
   color: #fff;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
+}
+
+/* Responsive tweaks for date tabs */
+@media screen and (max-width: 700px) {
+  .dateTabs {
+    max-width: 100%;
+  }
+  .dateTab {
+    font-size: 12px;
+    padding: 8px;
+  }
+  .slotsAvailable {
+    font-size: 11px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .dateTabsWrapper {
+    gap: 0;
+  }
+  .arrowBtn {
+    font-size: 18px;
+    padding: 5px;
+  }
+  .dateTab {
+    font-size: 11px;
+    padding: 6px;
+  }
+  .slotsAvailable {
+    font-size: 10px;
+  }
 }
