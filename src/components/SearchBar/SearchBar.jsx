@@ -4,7 +4,11 @@ import axios from "axios";
 import useDebounce from "../../hooks/useDebounce";
 import { useSnackbar } from "notistack";
 
-export default function SearchBar({ setStoreState, setStoreCity, setDisplayHospitalCard }) {
+export default function SearchBar({
+  setStoreState,
+  setStoreCity,
+  setDisplayHospitalCard,
+}) {
   const { enqueueSnackbar } = useSnackbar();
 
   const [stateInput, setStateInput] = useState("");
@@ -21,7 +25,6 @@ export default function SearchBar({ setStoreState, setStoreCity, setDisplayHospi
   const stateSuggestionsRef = useRef(null);
   const citySuggestionsRef = useRef(null);
 
-  // ✅ Load all states once
   useEffect(() => {
     axios
       .get(`https://meddata-backend.onrender.com/states`)
@@ -29,13 +32,18 @@ export default function SearchBar({ setStoreState, setStoreCity, setDisplayHospi
       .catch((err) => console.error("Error fetching States: ", err));
   }, []);
 
-  // ✅ Close suggestions when clicking outside
   useEffect(() => {
     function handleClickOutside(event) {
-      if (stateSuggestionsRef.current && !stateSuggestionsRef.current.contains(event.target)) {
+      if (
+        stateSuggestionsRef.current &&
+        !stateSuggestionsRef.current.contains(event.target)
+      ) {
         setSuggestionsState([]);
       }
-      if (citySuggestionsRef.current && !citySuggestionsRef.current.contains(event.target)) {
+      if (
+        citySuggestionsRef.current &&
+        !citySuggestionsRef.current.contains(event.target)
+      ) {
         setSuggestionsCity([]);
       }
     }
@@ -43,7 +51,6 @@ export default function SearchBar({ setStoreState, setStoreCity, setDisplayHospi
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // ✅ Fetch state suggestions
   useEffect(() => {
     if (debouncedInputState.length > 0) {
       setLoading(true);
@@ -64,18 +71,15 @@ export default function SearchBar({ setStoreState, setStoreCity, setDisplayHospi
     setStoreState(state);
     setSuggestionsState([]);
 
-    // Fetch all cities for selected state
     axios
       .get(`https://meddata-backend.onrender.com/cities/${state}`)
       .then((res) => setAllCities(res.data))
       .catch((err) => console.error("Error fetching Cities: ", err));
 
-    // Clear city input on state change
     setCityInput("");
     setStoreCity("");
   };
 
-  // ✅ Fetch city suggestions
   useEffect(() => {
     if (debouncedInputCity.length > 0 && stateInput.trim() !== "") {
       setLoading(true);
@@ -99,28 +103,34 @@ export default function SearchBar({ setStoreState, setStoreCity, setDisplayHospi
   const handleSearch = (e) => {
     e.preventDefault();
 
-    // ✅ Validation
     if (!allStates.includes(stateInput)) {
       setDisplayHospitalCard(false);
-      enqueueSnackbar("Please select a valid State from suggestions.", { variant: "warning" });
+      enqueueSnackbar("Please select a valid State from suggestions.", {
+        variant: "warning",
+      });
       return;
     }
     if (!allCities.includes(cityInput)) {
       setDisplayHospitalCard(false);
-      enqueueSnackbar("Please select a valid City from suggestions.", { variant: "warning" });
+      enqueueSnackbar("Please select a valid City from suggestions.", {
+        variant: "warning",
+      });
       return;
     }
 
-    // ✅ Valid inputs → show HospitalCard
     enqueueSnackbar("Searching hospitals...", { variant: "success" });
     setDisplayHospitalCard(true);
   };
 
   return (
     <form className={styles.mainContainer} onSubmit={handleSearch}>
-      {/* STATE */}
       <div className={styles.searchState} id="state" ref={stateSuggestionsRef}>
-        <img src={require("../../assets/locator.png")} alt="location" height="24" width="24" />
+        <img
+          src={require("../../assets/locator.png")}
+          alt="location"
+          height="24"
+          width="24"
+        />
         <input
           type="text"
           placeholder="State"
@@ -144,9 +154,13 @@ export default function SearchBar({ setStoreState, setStoreCity, setDisplayHospi
         )}
       </div>
 
-      {/* CITY */}
       <div className={styles.searchCity} id="city" ref={citySuggestionsRef}>
-        <img src={require("../../assets/locator.png")} alt="location" height="24" width="24" />
+        <img
+          src={require("../../assets/locator.png")}
+          alt="location"
+          height="24"
+          width="24"
+        />
         <input
           type="text"
           placeholder="City"
@@ -169,10 +183,13 @@ export default function SearchBar({ setStoreState, setStoreCity, setDisplayHospi
           </ul>
         )}
       </div>
-
-      {/* SEARCH BUTTON */}
       <button className={styles.btnSearch} type="submit" id="searchBtn">
-        <img src={require("../../assets/search-icn-white.png")} alt="search" width="20" height="20" />
+        <img
+          src={require("../../assets/search-icn-white.png")}
+          alt="search"
+          width="20"
+          height="20"
+        />
         Search
       </button>
     </form>

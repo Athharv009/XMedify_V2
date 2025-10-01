@@ -17,14 +17,12 @@
   border-radius: 8px;
 }
 .inputBoxSpan {
-  /* style={{display: "flex", alignItems: "center",width: "100%", height: "100%"}} */
   display: flex;
   align-items: center;
   width: 100%;
   height: 100%;
 }
 .mainDiv {
-  /* style={{width:"390px", height: "47px", background: "white", borderRadius: "8px", display: "flex", alignItems: "center"}} */
   width: 390px;
   height: 47px;
   background: white;
@@ -43,9 +41,7 @@
   }
 }
 @media screen and (max-width: 500px) {
-  /* .inputBoxSpan {
-    width: 100px;
-  } */
+
   .mainDiv {
     width: 250px;
   }

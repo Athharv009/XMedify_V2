@@ -1,48 +1,45 @@
 .specialCard {
-    height: 414px;
-    width: 370px;
-    margin-top: 10px;
-    margin-left: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; 
-    background: linear-gradient(144.2deg, #E1F3FF 0%, #2AA7FF 100%);
-    border: 10px solid white;
-    border-top-left-radius: 250px;
-    border-top-right-radius: 250px;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    box-shadow: 0px 15px 55px -10px #00000017;
-
+  height: 414px;
+  width: 370px;
+  margin-top: 10px;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(144.2deg, #e1f3ff 0%, #2aa7ff 100%);
+  border: 10px solid white;
+  border-top-left-radius: 250px;
+  border-top-right-radius: 250px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  box-shadow: 0px 15px 55px -10px #00000017;
 }
 
 .specialCard img {
-    width: 295px;
-    height: 364px;
-    object-fit: contain;
-    margin-top: 50px;
+  width: 295px;
+  height: 364px;
+  object-fit: contain;
+  margin-top: 50px;
 }
 
 .name {
-    font-size: 24px;
-    font-weight: 400;
-    color: #1B3C74;
-    margin-left: 20px;
+  font-size: 24px;
+  font-weight: 400;
+  color: #1b3c74;
+  margin-left: 20px;
 }
 
 .spec {
-    color: #2AA7FF;
-    font-size: 17px;
-    font-weight: 500;
-    margin-left: 20px;
+  color: #2aa7ff;
+  font-size: 17px;
+  font-weight: 500;
+  margin-left: 20px;
 }
 
 .swiperslider {
-    margin-bottom: 60px;
+  margin-bottom: 60px;
 }
 
-
 @media screen and (max-width: 450px) {
-    
 }

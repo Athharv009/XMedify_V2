@@ -29,7 +29,9 @@ export default function FindDoctors() {
           <HospitalCard storeState={storeState} storeCity={storeCity} />
         )}
       </div>
-      <div style={{background: "white", marginTop: "90px", paddingTop: "20px"}}>
+      <div
+        style={{ background: "white", marginTop: "90px", paddingTop: "20px" }}
+      >
         <FAQs />
       </div>
       <div>

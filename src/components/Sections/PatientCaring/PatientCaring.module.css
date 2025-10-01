@@ -109,7 +109,6 @@
   .patientContent {
     padding-bottom: 50px;
   }
-
 }
 
 @media screen and (max-width: 600px) {
@@ -127,7 +126,6 @@
 }
 
 @media screen and (max-width: 450px) {
-
   .patientCaringMain {
     gap: 0px;
   }

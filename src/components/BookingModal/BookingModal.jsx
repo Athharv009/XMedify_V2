@@ -15,7 +15,6 @@ const BookingCard = ({
   date,
   time,
 }) => {
-  // Format date to "20 April 2024"
   const formattedDate = new Date(date).toLocaleDateString("en-GB", {
     day: "2-digit",
     month: "long",
@@ -133,7 +132,7 @@ export default function BookingModal() {
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("bookings")) || [];
     setBookings(stored);
-    setFilteredBookings(stored); // initialize filtered list
+    setFilteredBookings(stored);
   }, []);
 
   const handleSearch = () => {

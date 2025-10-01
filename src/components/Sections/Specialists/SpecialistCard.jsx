@@ -13,11 +13,11 @@ export default function SpecialistCard() {
       spaceBetween={30}
       pagination={{ clickable: true }}
       breakpoints={{
-        0:   { slidesPerView: 1 },
+        0: { slidesPerView: 1 },
         640: { slidesPerView: 2 },
-        1024:{ slidesPerView: 3 },
+        1024: { slidesPerView: 3 },
       }}
-      >
+    >
       <SwiperSlide className={styles.swiperslider}>
         <div className={styles.specialCard}>
           <img

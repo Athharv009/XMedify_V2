@@ -1,86 +1,88 @@
 .designContainer {
-    width: 100%;
-height: 110px;
-opacity: 1;
-border-bottom-left-radius: 16px;
-border-bottom-right-radius: 16px;
-background: linear-gradient(91.75deg, #2AA7FF 1.4%, #0C8CE6 100.57%);
-z-index: 1;
+  width: 100%;
+  height: 110px;
+  opacity: 1;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  background: linear-gradient(91.75deg, #2aa7ff 1.4%, #0c8ce6 100.57%);
+  z-index: 1;
 }
 
 .mainContainer {
-    background: linear-gradient(81deg, #E7F0FF 9.01%, rgba(232, 241, 255, 0.47) 89.11%);
-    
+  background: linear-gradient(
+    81deg,
+    #e7f0ff 9.01%,
+    rgba(232, 241, 255, 0.47) 89.11%
+  );
 }
 
 .searchbarContent {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 1166px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 1166px;
 }
 
-.content h3{
-    font-family: "poppins" , sans-serif;
-font-weight: 500;
-font-style: Medium;
-font-size: 24px;
-line-height: 100%;
-letter-spacing: 0%;
-margin-top: 80px;
-text-align: center;
+.content h3 {
+  font-family: "poppins", sans-serif;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  margin-top: 80px;
+  text-align: center;
 }
 
 .mainContentDiv {
-    display: flex;
-    justify-content: center;
-    /* height: 100vh; */
-
+  display: flex;
+  justify-content: center;
+  /* height: 100vh; */
 }
 
 .contentText {
-    display: flex;
-    align-items: center;
-    gap: 30px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
 }
 
 .contentText img {
-    width: 23.81px;
-    height: 22px;
+  width: 23.81px;
+  height: 22px;
 }
 
 .contentText span {
-    font-family: "poppins", sans-serif;
-font-weight: 400;
-font-style: Regular;
-font-size: 16px;
-line-height: 100%;
-letter-spacing: 0%;
-text-align: center;
-vertical-align: middle;
-color: #787887;
+  font-family: "poppins", sans-serif;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  color: #787887;
 }
 
 @media screen and (max-width: 750px) {
-    .mainContentDiv {
-        width: 100%;
-    }
+  .mainContentDiv {
+    width: 100%;
+  }
 }
 @media screen and (max-width: 400px) {
-    .mainContentDiv {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
-    .mainContainer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+  .mainContentDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }

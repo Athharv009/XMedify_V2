@@ -1,72 +1,69 @@
 .downloadContent {
-    margin-top: 100px;
+  margin-top: 100px;
 }
 
-.textDownload h2{
-    font-family: "Poppins",sans-serif;
-font-weight: 600;
-font-style: SemiBold;
-font-size: 48px;
-line-height: 67px;
-letter-spacing: 0%;
-vertical-align: middle;
-color: #1B3C74;
-margin-bottom: 0px;
-margin-top: 0px;
+.textDownload h2 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 48px;
+  line-height: 67px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #1b3c74;
+  margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 .textDownload p {
-    font-family: "Lato", sans-serif;
-font-weight: 700;
-font-style: Bold;
-font-size: 16px;
-leading-trim: NONE;
-line-height: 24px;
-letter-spacing: 0%;
-vertical-align: middle;
-
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  vertical-align: middle;
 }
 
 .downloadBtn {
-    display: flex;
-    gap: 30px;
-    justify-content: flex-start;
-    margin-top: 50px;
+  display: flex;
+  gap: 30px;
+  justify-content: flex-start;
+  margin-top: 50px;
 }
 
 .downloadBtn button img {
-    object-fit: contain;
+  object-fit: contain;
 }
 
 .rotateArrow {
-    /* style={{ rotate: "79.51 deg", marginBottom: "30px" }} */
-    rotate: 79.51 deg;
-    margin-bottom: 30px;
+  rotate: 79.51 deg;
+  margin-bottom: 30px;
 }
 
 @media screen and (max-width: 1050px) {
-    .downloadContent {
-        margin-top: 0px;
-    }
-    .rotateArrow {
-        margin-bottom: 130px;
-    }
+  .downloadContent {
+    margin-top: 0px;
+  }
+  .rotateArrow {
+    margin-bottom: 130px;
+  }
 }
 
 @media screen and (max-width: 620px) {
-    .rotateArrow {
-        margin-bottom: 190px;
-    }
+  .rotateArrow {
+    margin-bottom: 190px;
+  }
 }
 
 @media screen and (max-width: 600px) {
-    .downloadBtn {
-        flex-wrap: wrap;
-    }
-    .rotateArrow {
-        margin-bottom: 290px;
-    }
-    .textDownload h2 {
-        font-size: 36px;
-    }
+  .downloadBtn {
+    flex-wrap: wrap;
+  }
+  .rotateArrow {
+    margin-bottom: 290px;
+  }
+  .textDownload h2 {
+    font-size: 36px;
+  }
 }

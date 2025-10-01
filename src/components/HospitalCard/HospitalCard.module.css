@@ -124,9 +124,9 @@
 }
 
 .bookingContent {
-    margin-left: 10px;
-    margin-right: 10px;
-  }
+  margin-left: 10px;
+  margin-right: 10px;
+}
 
 /* Responsive main cards */
 @media screen and (max-width: 1300px) {
@@ -223,7 +223,6 @@
     padding-left: 0;
     padding-right: 0;
   }
-  
 }
 @media screen and (max-width: 500px) {
   .hospitalcard {
@@ -266,9 +265,6 @@
   }
 }
 
-/* ------------------- */
-/* Date Tabs (with arrows, 3 at once, responsive) */
-/* ------------------- */
 .dateTabsWrapper {
   display: flex;
   align-items: center;
@@ -294,7 +290,7 @@
   display: flex;
   justify-content: space-between;
   flex: 1;
-  max-width: 500px; /* keep only 3 visible */
+  max-width: 500px;
   position: relative;
   overflow: hidden;
 }
@@ -322,11 +318,11 @@
 
 .activeUnderline {
   position: absolute;
-  bottom: 0; /* sits exactly at the bottom */
+  bottom: 0;
   height: 3px;
   background-color: #14bef0;
-  width: calc(100% / 3); /* always 3 visible tabs */
-  transform: translateX(0%); /* JS will update this on click */
+  width: calc(100% / 3);
+  transform: translateX(0%);
   transition: transform 0.3s ease;
   border-radius: 2px;
 }
@@ -382,7 +378,6 @@
   cursor: pointer;
 }
 
-/* Responsive tweaks for date tabs */
 @media screen and (max-width: 700px) {
   .dateTabs {
     max-width: 100%;

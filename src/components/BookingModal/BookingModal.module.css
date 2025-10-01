@@ -135,6 +135,7 @@ color: #007100;
   display: flex;
   gap: 20px;
   margin-bottom: 100px;
+  justify-content: center;
 }
 .hospitalcard {
   background: #ffffff;

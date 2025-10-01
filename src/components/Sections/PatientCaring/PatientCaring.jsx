@@ -5,7 +5,7 @@ export default function PatientCaring() {
     <div className={styles.patientCaringMain}>
       <div className={styles.patientPic}>
         <div className={styles.patientDiv1}>
-          <div style={{display: "flex", alignItems: "center"}}>
+          <div style={{ display: "flex", alignItems: "center" }}>
             <div className={styles.callConsultation}>
               <div
                 style={{
@@ -47,15 +47,33 @@ export default function PatientCaring() {
           </div>
         </div>
         <div className={styles.patientDiv2}>
-            <img src={require("../../../assets/patient2.png")} alt="patient2"/>
+          <img src={require("../../../assets/patient2.png")} alt="patient2" />
         </div>
       </div>
       <div className={styles.patientContent}>
-        <p style={{color: "#2AA7FF", fontWeight: "600", fontSize: "16px"}}>HELPING PATIENTS FROM AROUND THE GLOBE!!</p>
-        <h2 style={{color: "#1B3C74", fontSize: "48px", fontWeight: "600", marginTop: "0px", marginBottom: "0px"  }} >
-          Patient <span style={{color: "#2AA7FF"}}>Caring</span>
+        <p style={{ color: "#2AA7FF", fontWeight: "600", fontSize: "16px" }}>
+          HELPING PATIENTS FROM AROUND THE GLOBE!!
+        </p>
+        <h2
+          style={{
+            color: "#1B3C74",
+            fontSize: "48px",
+            fontWeight: "600",
+            marginTop: "0px",
+            marginBottom: "0px",
+          }}
+        >
+          Patient <span style={{ color: "#2AA7FF" }}>Caring</span>
         </h2>
-        <p style={{color: "#77829D", fontSize: "17px", lineHeight:"29px", fontWeight: "500", marginBottom: "50px"}}>
+        <p
+          style={{
+            color: "#77829D",
+            fontSize: "17px",
+            lineHeight: "29px",
+            fontWeight: "500",
+            marginBottom: "50px",
+          }}
+        >
           Our goal is to deliver quality of care in a courteous, respectful, and
           compassionate manner. We hope you will allow us to care for you and
           strive to be the first and best choice for healthcare.

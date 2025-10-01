@@ -1,73 +1,72 @@
-
 .specialisationMain {
-    background: linear-gradient(81deg, #E7F0FF 9.01%, rgba(232, 241, 255, 0.47) 89.11%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 60px;
+  background: linear-gradient(
+    81deg,
+    #e7f0ff 9.01%,
+    rgba(232, 241, 255, 0.47) 89.11%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
 }
 
 .specialisationMain h1 {
-    font-size: 48px;
-    color: #1B3C74;
-    font-weight: 600;
-    margin-top: 70px;
-    text-align: center;
+  font-size: 48px;
+  color: #1b3c74;
+  font-weight: 600;
+  margin-top: 70px;
+  text-align: center;
 }
 
 .cardSpecialisation {
-    width: 270px;
-    height: 180px;
-    background-color: #FFFFFF; 
-    box-shadow: 0px 34px 44px 0px #D5DBE470;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    justify-content: center;
-    border-radius: 10px;
+  width: 270px;
+  height: 180px;
+  background-color: #ffffff;
+  box-shadow: 0px 34px 44px 0px #d5dbe470;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+  border-radius: 10px;
 }
- 
+
 .mainDivCard {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-left: 110px;
-    margin-right: 110px;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-left: 110px;
+  margin-right: 110px;
 }
 
 .specialisationMain button {
-    background-color: #2AA8FF;
-    font-size: 16px;
-    border-radius: 8px;
-    border: none;
-    color: white;
-    width: 147px;
-    height: 50px;
-    margin-bottom: 60px;
+  background-color: #2aa8ff;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  width: 147px;
+  height: 50px;
+  margin-bottom: 60px;
 }
 
 .cardSpecialisation img {
-    width: 80px;
-    height: 80px;
+  width: 80px;
+  height: 80px;
 }
 
-
-
 @media screen and (max-width: 500px) {
-    .specialisationMain h1 {
+  .specialisationMain h1 {
     font-size: 42px;
-    }
+  }
 
-    .mainDivCard {
-        margin-left: 0px;
-        margin-right: 0px;
-    }
+  .mainDivCard {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
 
-    .mainDiv {
-        padding: 20px;
-    }
-
-
+  .mainDiv {
+    padding: 20px;
+  }
 }

@@ -89,10 +89,9 @@ align-items: center;
 gap: 10px;
 }
 
-/* Styles for the suggestions list */
 .suggestionsList {
   position: absolute;
-  top: 100%; /* Position the list directly below the input */
+  top: 100%;
   left: 0;
   right: 0;
   background-color: white;
@@ -115,14 +114,13 @@ gap: 10px;
 }
 
 .suggestionsList li:last-child {
-  border-bottom: none; /* No border on the last item */
+  border-bottom: none; 
 }
 
 .suggestionsList li:hover {
   background-color: #f0f0f0;
 }
 
-/* Style for the loading message */
 .loadingMessage {
   padding: 10px;
   text-align: center;
