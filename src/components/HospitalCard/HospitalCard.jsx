@@ -28,7 +28,6 @@ const Card = ({
 
     const booking = {
       id: Date.now(),
-      name: hospitalName,
       hospitalName,
       address,
       city,
@@ -42,15 +41,9 @@ const Card = ({
 
     const existingBookings = JSON.parse(localStorage.getItem("bookings")) || [];
     existingBookings.push(booking);
-    try {
-      localStorage.setItem("bookings", JSON.stringify(existingBookings));
-    } catch (err) {
-      // localStorage quota or other error - keep behavior non-blocking
-      // eslint-disable-next-line no-console
-      console.error("Error saving booking to localStorage:", err);
-    }
+    localStorage.setItem("bookings", JSON.stringify(existingBookings));
 
-    // do not use alert() — it blocks Cypress; close booking UI and reset selections
+    // reset UI
     setBookingClick(false);
     setSelectedDate("");
     setSelectedSlot("");
@@ -237,7 +230,7 @@ export default function HospitalCard({ storeState, storeCity }) {
   return (
     <div className={styles.mainDiv}>
       <div className={styles.contentText}>
-        <h1>{medicalCenters.length} medical centers available in {storeState}</h1>
+        <h1>{medicalCenters.length} medical centers available in {storeCity?.toLowerCase()}</h1>
         <div className={styles.contentdivBooking}>
           <img src={require("../../assets/tickMark.png")} alt="TickMark" height={"22px"} width={"23.81px"} />
           <p style={{ color: "#787887" }}>Book appointments with minimum wait-time & verified doctor details</p>
