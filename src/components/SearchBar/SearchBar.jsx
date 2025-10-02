@@ -8,13 +8,11 @@ export default function SearchBar({
   setStoreState,
   setStoreCity,
   setDisplayHospitalCard,
-  initialState = "",
-  initialCity = "",
 }) {
   const { enqueueSnackbar } = useSnackbar();
 
-  const [stateInput, setStateInput] = useState(initialState);
-  const [cityInput, setCityInput] = useState(initialCity);
+  const [stateInput, setStateInput] = useState("");
+  const [cityInput, setCityInput] = useState("");
   const [suggestionsState, setSuggestionsState] = useState([]);
   const [suggestionsCity, setSuggestionsCity] = useState([]);
   const [allStates, setAllStates] = useState([]);
@@ -27,7 +25,6 @@ export default function SearchBar({
   const stateSuggestionsRef = useRef(null);
   const citySuggestionsRef = useRef(null);
 
-  // Fetch all states
   useEffect(() => {
     axios
       .get(`https://meddata-backend.onrender.com/states`)
@@ -35,23 +32,18 @@ export default function SearchBar({
       .catch((err) => console.error("Error fetching States: ", err));
   }, []);
 
-  // Fetch cities if state is pre-filled
-  useEffect(() => {
-    if (initialState) {
-      axios
-        .get(`https://meddata-backend.onrender.com/cities/${initialState}`)
-        .then((res) => setAllCities(res.data))
-        .catch((err) => console.error("Error fetching Cities: ", err));
-    }
-  }, [initialState]);
-
-  // Close dropdowns when clicking outside
   useEffect(() => {
     function handleClickOutside(event) {
-      if (stateSuggestionsRef.current && !stateSuggestionsRef.current.contains(event.target)) {
+      if (
+        stateSuggestionsRef.current &&
+        !stateSuggestionsRef.current.contains(event.target)
+      ) {
         setSuggestionsState([]);
       }
-      if (citySuggestionsRef.current && !citySuggestionsRef.current.contains(event.target)) {
+      if (
+        citySuggestionsRef.current &&
+        !citySuggestionsRef.current.contains(event.target)
+      ) {
         setSuggestionsCity([]);
       }
     }
@@ -59,7 +51,6 @@ export default function SearchBar({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Filter state suggestions
   useEffect(() => {
     if (debouncedInputState.length > 0) {
       setLoading(true);
@@ -89,7 +80,6 @@ export default function SearchBar({
     setStoreCity("");
   };
 
-  // Filter city suggestions
   useEffect(() => {
     if (debouncedInputCity.length > 0 && stateInput.trim() !== "") {
       setLoading(true);
@@ -110,31 +100,37 @@ export default function SearchBar({
     setSuggestionsCity([]);
   };
 
-  // Handle search button click - display hospitals only on click
   const handleSearch = (e) => {
     e.preventDefault();
 
     if (!allStates.includes(stateInput)) {
       setDisplayHospitalCard(false);
-      enqueueSnackbar("Please select a valid State from suggestions.", { variant: "warning" });
+      enqueueSnackbar("Please select a valid State from suggestions.", {
+        variant: "warning",
+      });
       return;
     }
     if (!allCities.includes(cityInput)) {
       setDisplayHospitalCard(false);
-      enqueueSnackbar("Please select a valid City from suggestions.", { variant: "warning" });
+      enqueueSnackbar("Please select a valid City from suggestions.", {
+        variant: "warning",
+      });
       return;
     }
 
     enqueueSnackbar("Searching hospitals...", { variant: "success" });
-    setStoreState(stateInput);
-    setStoreCity(cityInput);
     setDisplayHospitalCard(true);
   };
 
   return (
     <form className={styles.mainContainer} onSubmit={handleSearch}>
       <div className={styles.searchState} id="state" ref={stateSuggestionsRef}>
-        <img src={require("../../assets/locator.png")} alt="location" height="24" width="24" />
+        <img
+          src={require("../../assets/locator.png")}
+          alt="location"
+          height="24"
+          width="24"
+        />
         <input
           type="text"
           placeholder="State"
@@ -149,7 +145,7 @@ export default function SearchBar({
               <li className={styles.loadingMessage}>Loading...</li>
             ) : (
               suggestionsState.map((state, idx) => (
-                <li key={idx} onClick={() => handleSelectState(state)} data-cy={`state-${state}`}>
+                <li key={idx} onClick={() => handleSelectState(state)}>
                   {state}
                 </li>
               ))
@@ -159,7 +155,12 @@ export default function SearchBar({
       </div>
 
       <div className={styles.searchCity} id="city" ref={citySuggestionsRef}>
-        <img src={require("../../assets/locator.png")} alt="location" height="24" width="24" />
+        <img
+          src={require("../../assets/locator.png")}
+          alt="location"
+          height="24"
+          width="24"
+        />
         <input
           type="text"
           placeholder="City"
@@ -174,7 +175,7 @@ export default function SearchBar({
               <li className={styles.loadingMessage}>Loading...</li>
             ) : (
               suggestionsCity.map((city, idx) => (
-                <li key={idx} onClick={() => handleSelectCity(city)} data-cy={`city-${city}`}>
+                <li key={idx} onClick={() => handleSelectCity(city)}>
                   {city}
                 </li>
               ))
@@ -182,9 +183,13 @@ export default function SearchBar({
           </ul>
         )}
       </div>
-
-      <button className={styles.btnSearch} type="submit" id="searchBtn" data-cy="search-btn">
-        <img src={require("../../assets/search-icn-white.png")} alt="search" width="20" height="20" />
+      <button className={styles.btnSearch} type="submit" id="searchBtn">
+        <img
+          src={require("../../assets/search-icn-white.png")}
+          alt="search"
+          width="20"
+          height="20"
+        />
         Search
       </button>
     </form>

@@ -22,7 +22,7 @@ export default function FindDoctors() {
     if (stateParam && cityParam) {
       setStoreState(stateParam);
       setStoreCity(cityParam);
-      setDisplayHospitalCard(false);
+      setDisplayHospitalCard(true); // Show hospitals immediately if params exist
     }
   }, [location.search]);
 
