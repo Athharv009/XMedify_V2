@@ -149,7 +149,7 @@ export default function SearchBar({
               <li className={styles.loadingMessage}>Loading...</li>
             ) : (
               suggestionsState.map((state, idx) => (
-                <li key={idx} onClick={() => handleSelectState(state)}>
+                <li key={idx} onClick={() => handleSelectState(state)} data-cy={`state-${state}`}>
                   {state}
                 </li>
               ))
@@ -174,7 +174,7 @@ export default function SearchBar({
               <li className={styles.loadingMessage}>Loading...</li>
             ) : (
               suggestionsCity.map((city, idx) => (
-                <li key={idx} onClick={() => handleSelectCity(city)}>
+                <li key={idx} onClick={() => handleSelectCity(city)} data-cy={`city-${city}`}>
                   {city}
                 </li>
               ))
@@ -183,7 +183,7 @@ export default function SearchBar({
         )}
       </div>
 
-      <button className={styles.btnSearch} type="submit" id="searchBtn">
+      <button className={styles.btnSearch} type="submit" id="searchBtn" data-cy="search-btn">
         <img src={require("../../assets/search-icn-white.png")} alt="search" width="20" height="20" />
         Search
       </button>
