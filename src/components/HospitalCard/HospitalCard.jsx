@@ -16,6 +16,14 @@ const Card = ({
   const [selectedSlot, setSelectedSlot] = useState("");
   const [startIndex, setStartIndex] = useState(0);
 
+  // ✅ Load persisted bookings (not shown, but ensures state consistency)
+  useEffect(() => {
+    const savedBookings = JSON.parse(localStorage.getItem("bookings")) || [];
+    if (!Array.isArray(savedBookings)) {
+      localStorage.setItem("bookings", JSON.stringify([]));
+    }
+  }, []);
+
   const handleConfirm = () => {
     const booking = {
       hospitalName,
@@ -29,12 +37,15 @@ const Card = ({
       time: selectedSlot,
     };
 
+    // ✅ Save bookings in localStorage persistently
     const existingBookings = JSON.parse(localStorage.getItem("bookings")) || [];
     existingBookings.push(booking);
     localStorage.setItem("bookings", JSON.stringify(existingBookings));
 
     alert(`Booking confirmed on ${selectedDate} at ${selectedSlot}`);
     setBookingClick(false);
+    setSelectedDate("");
+    setSelectedSlot("");
   };
 
   return (
