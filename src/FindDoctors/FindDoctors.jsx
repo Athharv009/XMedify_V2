@@ -14,7 +14,6 @@ export default function FindDoctors() {
   const [storeCity, setStoreCity] = useState("");
   const [displayHospitalCard, setDisplayHospitalCard] = useState(false);
 
-  // Read URL params if coming from HeroServices
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const stateParam = params.get("state");
@@ -23,7 +22,7 @@ export default function FindDoctors() {
     if (stateParam && cityParam) {
       setStoreState(stateParam);
       setStoreCity(cityParam);
-      setDisplayHospitalCard(true);
+      setDisplayHospitalCard(false);
     }
   }, [location.search]);
 

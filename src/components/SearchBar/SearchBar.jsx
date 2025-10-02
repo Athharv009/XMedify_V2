@@ -110,7 +110,7 @@ export default function SearchBar({
     setSuggestionsCity([]);
   };
 
-  // Handle search button click
+  // Handle search button click - display hospitals only on click
   const handleSearch = (e) => {
     e.preventDefault();
 
@@ -158,7 +158,7 @@ export default function SearchBar({
         )}
       </div>
 
-      <div className={styles.searchCity}  ref={citySuggestionsRef} id="city">
+      <div className={styles.searchCity} id="city" ref={citySuggestionsRef}>
         <img src={require("../../assets/locator.png")} alt="location" height="24" width="24" />
         <input
           type="text"

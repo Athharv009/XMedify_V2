@@ -185,6 +185,7 @@ export default function HeroServices() {
               <button
                 className={styles.btnSearch}
                 type="button"
+                id="searchBtn"
                 onClick={handleSearch}
               >
                 <span>
