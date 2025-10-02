@@ -1,25 +1,16 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import IconCard from "../IconCard/IconCard";
 import styles from "./HeroServices.module.css";
 import axios from "axios";
-import useDebounce from "../../hooks/useDebounce";
 import { useNavigate } from "react-router";
 
 export default function HeroServices() {
   const [stateInput, setStateInput] = useState("");
   const [cityInput, setCityInput] = useState("");
-  const [suggestionsState, setSuggestionsState] = useState([]);
-  const [suggestionsCity, setSuggestionsCity] = useState([]);
   const [allStates, setAllStates] = useState([]);
   const [allCities, setAllCities] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
-  const debouncedInputState = useDebounce(stateInput, 500);
-  const debouncedInputCity = useDebounce(cityInput, 500);
-
-  const stateSuggestionsRef = useRef(null);
-  const citySuggestionsRef = useRef(null);
 
   // Fetch all states on mount
   useEffect(() => {
@@ -29,70 +20,18 @@ export default function HeroServices() {
       .catch((err) => console.error("Error fetching States: ", err));
   }, []);
 
-  // Close suggestions when clicking outside
+  // Fetch cities whenever a state is selected
   useEffect(() => {
-    function handleClickOutside(event) {
-      if (
-        stateSuggestionsRef.current &&
-        !stateSuggestionsRef.current.contains(event.target)
-      ) {
-        setSuggestionsState([]);
-      }
-      if (
-        citySuggestionsRef.current &&
-        !citySuggestionsRef.current.contains(event.target)
-      ) {
-        setSuggestionsCity([]);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  // Filter state suggestions
-  useEffect(() => {
-    if (debouncedInputState.length > 0) {
-      setLoading(true);
-      const filtered = allStates.filter((item) =>
-        item.toLowerCase().startsWith(debouncedInputState.toLowerCase())
-      );
-      setSuggestionsState(filtered);
-      setLoading(false);
+    if (stateInput) {
+      axios
+        .get(`https://meddata-backend.onrender.com/cities/${stateInput}`)
+        .then((res) => setAllCities(res.data))
+        .catch((err) => console.error("Error fetching Cities: ", err));
     } else {
-      setSuggestionsState([]);
+      setAllCities([]);
+      setCityInput("");
     }
-  }, [debouncedInputState, allStates]);
-
-  const handleSelectState = (state) => {
-    setStateInput(state);
-    setSuggestionsState([]);
-    setCityInput("");
-    setAllCities([]);
-    // Fetch cities for this state
-    axios
-      .get(`https://meddata-backend.onrender.com/cities/${state}`)
-      .then((res) => setAllCities(res.data))
-      .catch((err) => console.error("Error fetching Cities: ", err));
-  };
-
-  // Filter city suggestions
-  useEffect(() => {
-    if (debouncedInputCity.length > 0 && stateInput.trim() !== "") {
-      setLoading(true);
-      const filtered = allCities.filter((item) =>
-        item.toLowerCase().startsWith(debouncedInputCity.toLowerCase())
-      );
-      setSuggestionsCity(filtered);
-      setLoading(false);
-    } else {
-      setSuggestionsCity([]);
-    }
-  }, [debouncedInputCity, allCities, stateInput]);
-
-  const handleSelectCity = (city) => {
-    setCityInput(city);
-    setSuggestionsCity([]);
-  };
+  }, [stateInput]);
 
   const handleSearch = () => {
     if (!stateInput || !cityInput) return;
@@ -108,78 +47,49 @@ export default function HeroServices() {
       <div className={styles.heroServicesMain}>
         <div className={styles.servicesContainer}>
           <div className={styles.servicesMain}>
-            {/* State Input */}
+            {/* State Select */}
             <div className={styles.service}>
               <img
                 src={require("../../assets/search-icn.png")}
                 alt="search icon"
               />
-              <div
-                className={styles.autocompleteWrapper}
-                ref={stateSuggestionsRef}
-                id="state"
-              >
-                <input
-                  placeholder="State"
-                  type="text"
-                  required
+              <div className={styles.autocompleteWrapper} id="state">
+                <select
                   value={stateInput}
                   onChange={(e) => setStateInput(e.target.value)}
-                />
-                {(loading || suggestionsState.length > 0) && (
-                  <ul className={styles.suggestionsList}>
-                    {loading ? (
-                      <li className={styles.loadingMessage}>Loading...</li>
-                    ) : (
-                      suggestionsState.map((state, index) => (
-                        <li
-                          key={index}
-                          onClick={() => handleSelectState(state)}
-                        >
-                          {state}
-                        </li>
-                      ))
-                    )}
-                  </ul>
-                )}
+                  style={{border: 'none', height: "45px"}}
+                >
+                  <option value="">Select State</option>
+                  {allStates.map((state, idx) => (
+                    <option key={idx} value={state}>
+                      {state}
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
 
-            {/* City Input */}
+            {/* City Select */}
             <div className={styles.btwInpBtn}>
               <div className={styles.service}>
                 <img
                   src={require("../../assets/search-icn.png")}
                   alt="search icon"
                 />
-                <div
-                  className={styles.autocompleteWrapper}
-                  ref={citySuggestionsRef}
-                  id="city"
-                >
-                  <input
-                    placeholder="City"
-                    type="text"
-                    required
+                <div className={styles.autocompleteWrapper} id="city">
+                  <select
                     value={cityInput}
                     onChange={(e) => setCityInput(e.target.value)}
-                  />
-                  {(loading || suggestionsCity.length > 0) && (
-                    <ul className={styles.suggestionsList}>
-                      {loading ? (
-                        <li className={styles.loadingMessage}>Loading...</li>
-                      ) : (
-                        suggestionsCity.map((city, index) => (
-                          <li
-                            key={index}
-                            onClick={() => handleSelectCity(city)}
-                          >
-                            {city}
-                          </li>
-                        ))
-                      )}
-                    </ul>
-                  )}
+                    disabled={!stateInput}
+                    style={{border: 'none', height: "45px"}}
+                  >
+                    <option value="">Select City</option>
+                    {allCities.map((city, idx) => (
+                      <option key={idx} value={city}>
+                        {city}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </div>
               <button
