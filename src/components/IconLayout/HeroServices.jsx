@@ -6,12 +6,8 @@ import useDebounce from "../../hooks/useDebounce";
 import { useNavigate } from "react-router";
 
 export default function HeroServices() {
-  const [stateInput, setStateInput] = useState(
-    localStorage.getItem("selectedState") || ""
-  );
-  const [cityInput, setCityInput] = useState(
-    localStorage.getItem("selectedCity") || ""
-  );
+  const [stateInput, setStateInput] = useState("");
+  const [cityInput, setCityInput] = useState("");
   const [suggestionsState, setSuggestionsState] = useState([]);
   const [suggestionsCity, setSuggestionsCity] = useState([]);
   const [allStates, setAllStates] = useState([]);
@@ -24,12 +20,32 @@ export default function HeroServices() {
   const stateSuggestionsRef = useRef(null);
   const citySuggestionsRef = useRef(null);
 
-  // Fetch all states
+  // Fetch all states once on mount
   useEffect(() => {
     axios
       .get("https://meddata-backend.onrender.com/states")
       .then((res) => setAllStates(res.data))
       .catch((err) => console.error("Error fetching States: ", err));
+  }, []);
+
+  // Close suggestions when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        stateSuggestionsRef.current &&
+        !stateSuggestionsRef.current.contains(event.target)
+      ) {
+        setSuggestionsState([]);
+      }
+      if (
+        citySuggestionsRef.current &&
+        !citySuggestionsRef.current.contains(event.target)
+      ) {
+        setSuggestionsCity([]);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   // Filter state suggestions
@@ -44,6 +60,19 @@ export default function HeroServices() {
     }
   }, [debouncedInputState, allStates]);
 
+  const handleStateInputChange = (e) => setStateInput(e.target.value);
+
+  const handleSelectState = (state) => {
+    setStateInput(state);
+    setSuggestionsState([]);
+    setCityInput("");
+    setSuggestionsCity([]);
+    axios
+      .get(`https://meddata-backend.onrender.com/cities/${state}`)
+      .then((res) => setAllCities(res.data))
+      .catch((err) => console.error("Error fetching Cities: ", err));
+  };
+
   // Filter city suggestions
   useEffect(() => {
     if (debouncedInputCity.length > 0 && allCities.length > 0) {
@@ -56,55 +85,24 @@ export default function HeroServices() {
     }
   }, [debouncedInputCity, allCities]);
 
-  // Close suggestions when clicking outside
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (
-        stateSuggestionsRef.current &&
-        !stateSuggestionsRef.current.contains(event.target)
-      )
-        setSuggestionsState([]);
-      if (
-        citySuggestionsRef.current &&
-        !citySuggestionsRef.current.contains(event.target)
-      )
-        setSuggestionsCity([]);
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  const handleSelectState = (state) => {
-    setStateInput(state);
-    setSuggestionsState([]);
-    setCityInput("");
-    setSuggestionsCity([]);
-    localStorage.setItem("selectedState", state); // persist state
-    localStorage.removeItem("selectedCity"); // remove previous city
-
-    axios
-      .get(`https://meddata-backend.onrender.com/cities/${state}`)
-      .then((res) => setAllCities(res.data))
-      .catch((err) => console.error(err));
-  };
+  const handleCityInputChange = (e) => setCityInput(e.target.value);
 
   const handleSelectCity = (city) => {
     setCityInput(city);
     setSuggestionsCity([]);
-    localStorage.setItem("selectedCity", city); // persist city
   };
 
   const handleSearch = () => {
-    if (!stateInput || !cityInput) return;
-    // localStorage already has values
-    navigate("/find-doctors"); // navigate to HospitalCard page
+    if (stateInput && cityInput) {
+      navigate("/find-doctors");
+    }
   };
 
   return (
     <div className={styles.mainContainer}>
       <div className={styles.heroServicesMain}>
         <div className={styles.servicesContainer}>
-          <form className={styles.servicesMain} onSubmit={(e) => e.preventDefault()}>
+          <form className={styles.servicesMain}>
             {/* State Input */}
             <div className={styles.service}>
               <img
@@ -114,18 +112,19 @@ export default function HeroServices() {
               <div
                 className={styles.autocompleteWrapper}
                 ref={stateSuggestionsRef}
+                id="state"
               >
                 <input
                   placeholder="State"
                   type="text"
-                  value={stateInput}
-                  onChange={(e) => setStateInput(e.target.value)}
                   required
+                  onChange={handleStateInputChange}
+                  value={stateInput}
                 />
                 {suggestionsState.length > 0 && (
                   <ul className={styles.suggestionsList}>
-                    {suggestionsState.map((state, idx) => (
-                      <li key={idx} onClick={() => handleSelectState(state)}>
+                    {suggestionsState.map((state, index) => (
+                      <li key={index} onClick={() => handleSelectState(state)}>
                         {state}
                       </li>
                     ))}
@@ -144,18 +143,19 @@ export default function HeroServices() {
                 <div
                   className={styles.autocompleteWrapper}
                   ref={citySuggestionsRef}
+                  id="city"
                 >
                   <input
                     placeholder="City"
                     type="text"
-                    value={cityInput}
-                    onChange={(e) => setCityInput(e.target.value)}
                     required
+                    onChange={handleCityInputChange}
+                    value={cityInput}
                   />
                   {suggestionsCity.length > 0 && (
                     <ul className={styles.suggestionsList}>
-                      {suggestionsCity.map((city, idx) => (
-                        <li key={idx} onClick={() => handleSelectCity(city)}>
+                      {suggestionsCity.map((city, index) => (
+                        <li key={index} onClick={() => handleSelectCity(city)}>
                           {city}
                         </li>
                       ))}
@@ -163,7 +163,6 @@ export default function HeroServices() {
                   )}
                 </div>
               </div>
-
               <button
                 className={styles.btnSearch}
                 type="button"
