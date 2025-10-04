@@ -12,6 +12,7 @@ export default function HeroServices() {
   const [suggestionsCity, setSuggestionsCity] = useState([]);
   const [allStates, setAllStates] = useState([]);
   const [allCities, setAllCities] = useState([]);
+
   const navigate = useNavigate();
 
   const debouncedInputState = useDebounce(stateInput, 500);
@@ -94,8 +95,8 @@ export default function HeroServices() {
 
   const handleSearch = () => {
     if (stateInput && cityInput) {
-      navigate("/find-doctors");
-    }
+    navigate(`/find-doctors?state=${encodeURIComponent(stateInput)}&city=${encodeURIComponent(cityInput)}`);
+  }
   };
 
   return (
