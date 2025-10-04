@@ -3,7 +3,7 @@ import IconCard from "../IconCard/IconCard";
 import styles from "./HeroServices.module.css";
 import axios from "axios";
 import useDebounce from "../../hooks/useDebounce";
-import HospitalCard from "../HospitalCard/HospitalCard";
+import { useNavigate } from "react-router";
 
 export default function HeroServices() {
   const [stateInput, setStateInput] = useState("");
@@ -12,7 +12,8 @@ export default function HeroServices() {
   const [suggestionsCity, setSuggestionsCity] = useState([]);
   const [allStates, setAllStates] = useState([]);
   const [allCities, setAllCities] = useState([]);
-  const [displayHospitalCard, setDisplayHospitalCard] = useState(false);
+
+  const navigate = useNavigate();
 
   const debouncedInputState = useDebounce(stateInput, 500);
   const debouncedInputCity = useDebounce(cityInput, 500);
@@ -92,11 +93,10 @@ export default function HeroServices() {
     setSuggestionsCity([]);
   };
 
-  // ✅ Show hospitals on the same page instead of navigating
   const handleSearch = () => {
     if (stateInput && cityInput) {
-      setDisplayHospitalCard(true);
-    }
+    navigate(`/find-doctors?state=${encodeURIComponent(stateInput)}&city=${encodeURIComponent(cityInput)}`);
+  }
   };
 
   return (
@@ -179,15 +179,9 @@ export default function HeroServices() {
               </button>
             </div>
           </form>
-          {/* ✅ Display HospitalCard after clicking Search */}
-      {displayHospitalCard && stateInput && cityInput && (
-        <HospitalCard storeState={stateInput} storeCity={cityInput} />
-      )}
           <IconCard />
         </div>
       </div>
-
-      
     </div>
   );
 }
