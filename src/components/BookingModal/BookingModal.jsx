@@ -135,6 +135,10 @@ export default function BookingModal() {
     setFilteredBookings(stored);
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem("bookings", JSON.stringify(bookings));
+  }, [bookings]);
+
   const handleSearch = () => {
     if (!searchTerm) {
       setFilteredBookings(bookings);
