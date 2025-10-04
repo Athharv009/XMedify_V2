@@ -17,7 +17,6 @@ export default function SearchBar({
   const [suggestionsCity, setSuggestionsCity] = useState([]);
   const [allStates, setAllStates] = useState([]);
   const [allCities, setAllCities] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   const debouncedInputState = useDebounce(stateInput, 500);
   const debouncedInputCity = useDebounce(cityInput, 500);
@@ -51,14 +50,13 @@ export default function SearchBar({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Filter state suggestions
   useEffect(() => {
     if (debouncedInputState.length > 0) {
-      setLoading(true);
       const filtered = allStates.filter((item) =>
         item.toLowerCase().startsWith(debouncedInputState.toLowerCase())
       );
       setSuggestionsState(filtered);
-      setLoading(false);
     } else {
       setSuggestionsState([]);
     }
@@ -80,14 +78,13 @@ export default function SearchBar({
     setStoreCity("");
   };
 
+  // Filter city suggestions
   useEffect(() => {
     if (debouncedInputCity.length > 0 && stateInput.trim() !== "") {
-      setLoading(true);
       const filtered = allCities.filter((item) =>
         item.toLowerCase().startsWith(debouncedInputCity.toLowerCase())
       );
       setSuggestionsCity(filtered);
-      setLoading(false);
     } else {
       setSuggestionsCity([]);
     }
@@ -139,17 +136,13 @@ export default function SearchBar({
           onChange={handleInputChangeState}
           required
         />
-        {(loading || suggestionsState.length > 0) && (
+        {suggestionsState.length > 0 && (
           <ul className={styles.suggestionsList}>
-            {loading ? (
-              <li className={styles.loadingMessage}>Loading...</li>
-            ) : (
-              suggestionsState.map((state, idx) => (
-                <li key={idx} onClick={() => handleSelectState(state)}>
-                  {state}
-                </li>
-              ))
-            )}
+            {suggestionsState.map((state, idx) => (
+              <li key={idx} onClick={() => handleSelectState(state)}>
+                {state}
+              </li>
+            ))}
           </ul>
         )}
       </div>
@@ -169,17 +162,13 @@ export default function SearchBar({
           onChange={handleInputChangeCity}
           required
         />
-        {(loading || suggestionsCity.length > 0) && (
+        {suggestionsCity.length > 0 && (
           <ul className={styles.suggestionsList}>
-            {loading ? (
-              <li className={styles.loadingMessage}>Loading...</li>
-            ) : (
-              suggestionsCity.map((city, idx) => (
-                <li key={idx} onClick={() => handleSelectCity(city)}>
-                  {city}
-                </li>
-              ))
-            )}
+            {suggestionsCity.map((city, idx) => (
+              <li key={idx} onClick={() => handleSelectCity(city)}>
+                {city}
+              </li>
+            ))}
           </ul>
         )}
       </div>

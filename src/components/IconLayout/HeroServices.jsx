@@ -12,7 +12,6 @@ export default function HeroServices() {
   const [suggestionsCity, setSuggestionsCity] = useState([]);
   const [allStates, setAllStates] = useState([]);
   const [allCities, setAllCities] = useState([]);
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const debouncedInputState = useDebounce(stateInput, 500);
@@ -68,7 +67,6 @@ export default function HeroServices() {
     setSuggestionsState([]);
     setCityInput("");
     setSuggestionsCity([]);
-    // Fetch cities for this state
     axios
       .get(`https://meddata-backend.onrender.com/cities/${state}`)
       .then((res) => setAllCities(res.data))
@@ -123,17 +121,13 @@ export default function HeroServices() {
                   onChange={handleStateInputChange}
                   value={stateInput}
                 />
-                {(loading || suggestionsState.length > 0) && (
+                {suggestionsState.length > 0 && (
                   <ul className={styles.suggestionsList}>
-                    {loading ? (
-                      <li className={styles.loadingMessage}>Loading...</li>
-                    ) : (
-                      suggestionsState.map((state, index) => (
-                        <li key={index} onClick={() => handleSelectState(state)}>
-                          {state}
-                        </li>
-                      ))
-                    )}
+                    {suggestionsState.map((state, index) => (
+                      <li key={index} onClick={() => handleSelectState(state)}>
+                        {state}
+                      </li>
+                    ))}
                   </ul>
                 )}
               </div>
@@ -158,17 +152,13 @@ export default function HeroServices() {
                     onChange={handleCityInputChange}
                     value={cityInput}
                   />
-                  {(loading || suggestionsCity.length > 0) && (
+                  {suggestionsCity.length > 0 && (
                     <ul className={styles.suggestionsList}>
-                      {loading ? (
-                        <li className={styles.loadingMessage}>Loading...</li>
-                      ) : (
-                        suggestionsCity.map((city, index) => (
-                          <li key={index} onClick={() => handleSelectCity(city)}>
-                            {city}
-                          </li>
-                        ))
-                      )}
+                      {suggestionsCity.map((city, index) => (
+                        <li key={index} onClick={() => handleSelectCity(city)}>
+                          {city}
+                        </li>
+                      ))}
                     </ul>
                   )}
                 </div>
