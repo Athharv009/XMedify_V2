@@ -134,7 +134,7 @@ export default function BookingModal() {
     setBookings(stored);
     setFilteredBookings(stored);
   }, []);
-  
+
   const handleSearch = () => {
     if (!searchTerm) {
       setFilteredBookings(bookings);
@@ -171,15 +171,15 @@ export default function BookingModal() {
             {filteredBookings.map((booking, index) => (
               <BookingCard
                 key={index}
-                hospitalName={booking.HospitalName}
-                hospitalType={booking.HospitalType}
-                address={booking.Address}
-                city={booking.City}
-                state={booking.State}
-                zipCode={booking.ZipCode}
-                rating={booking.Rating}
-                date={booking.Date}
-                time={booking.Time}
+                hospitalName={booking["Hospital Name"]}
+                hospitalType={booking["Hospital Type"]}
+                address={booking["Address"]}
+                city={booking["City"]}
+                state={booking["State"]}
+                zipCode={booking["ZIP Code"]}
+                rating={booking["Rating"]}
+                date={booking["Date"]}
+                time={booking["Time"]}
               />
             ))}
           </div>

@@ -168,11 +168,11 @@ export default function HeroServices() {
                         <option value="">Select City</option>
                       </li>
                       <li>
-                        {allCities.map((city, index) => (
-                          <option key={index} value={city}>
-                            {city}
-                          </option>
-                        ))}
+                    {allCities.map((city, index) => (
+                      <option key={index} value={city}>
+                        {city}
+                      </option>
+                    ))}
                       </li>
                     </ul>
                   </select>
