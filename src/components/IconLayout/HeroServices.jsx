@@ -122,6 +122,7 @@ export default function HeroServices() {
                 <select
                   required
                   value={stateInput}
+                  id="state-select"
                   onChange={(e) => {
                     const selectedState = e.target.value;
                     handleSelectState(selectedState);
@@ -154,6 +155,7 @@ export default function HeroServices() {
                   <select
                     required
                     value={cityInput}
+                    id="city-select"
                     onChange={(e) => {
                       const selectedCity = e.target.value;
                       handleSelectCity(selectedCity);

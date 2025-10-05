@@ -131,27 +131,25 @@ export default function SearchBar({
           height="24"
           width="24"
         />
-        <input
-          type="text"
-          placeholder="State"
-          className={styles.searchInputState}
-          value={stateInput}
-          onChange={handleInputChangeState}
+        <select
           required
-        />
-        {(loading || suggestionsState.length > 0) && (
-          <ul className={styles.suggestionsList}>
-            {loading ? (
-              <li className={styles.loadingMessage}>Loading...</li>
-            ) : (
-              suggestionsState.map((state, idx) => (
-                <li key={idx} onClick={() => handleSelectState(state)}>
-                  {state}
-                </li>
-              ))
-            )}
-          </ul>
-        )}
+          value={stateInput}
+          id="state-select"
+          className={styles.searchInputState}
+          onChange={(e) => {
+            const selectedState = e.target.value;
+            handleSelectState(selectedState);
+          }}
+        >
+          <option value="">Select State</option>
+          {allStates.map((state, index) => (
+            <option key={index} value={state}>
+              <ul style={{ listStyle: "none" }}>
+                <li>{state}</li>
+              </ul>
+            </option>
+          ))}
+        </select>
       </div>
 
       <div className={styles.searchCity} id="city" ref={citySuggestionsRef}>
@@ -161,27 +159,25 @@ export default function SearchBar({
           height="24"
           width="24"
         />
-        <input
-          type="text"
-          placeholder="City"
-          className={styles.searchInputCity}
-          value={cityInput}
-          onChange={handleInputChangeCity}
+        <select
           required
-        />
-        {(loading || suggestionsCity.length > 0) && (
-          <ul className={styles.suggestionsList}>
-            {loading ? (
-              <li className={styles.loadingMessage}>Loading...</li>
-            ) : (
-              suggestionsCity.map((city, idx) => (
-                <li key={idx} onClick={() => handleSelectCity(city)}>
-                  {city}
-                </li>
-              ))
-            )}
-          </ul>
-        )}
+          value={cityInput}
+          id="city-select"
+          className={styles.searchInputCity}
+          onChange={(e) => {
+            const selectedCity = e.target.value;
+            handleSelectCity(selectedCity);
+          }}
+        >
+          <option value="">Select City</option>
+          {allCities.map((city, index) => (
+            <option key={index} value={city}>
+              <ul style={{ listStyle: "none" }}>
+                <li>{city}</li>
+              </ul>
+            </option>
+          ))}
+        </select>
       </div>
       <button className={styles.btnSearch} type="submit" id="searchBtn">
         <img
