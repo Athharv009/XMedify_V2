@@ -95,8 +95,12 @@ export default function HeroServices() {
 
   const handleSearch = () => {
     if (stateInput && cityInput) {
-    navigate(`/find-doctors?state=${encodeURIComponent(stateInput)}&city=${encodeURIComponent(cityInput)}`);
-  }
+      navigate(
+        `/find-doctors?state=${encodeURIComponent(
+          stateInput
+        )}&city=${encodeURIComponent(cityInput)}`
+      );
+    }
   };
 
   return (
@@ -115,22 +119,23 @@ export default function HeroServices() {
                 ref={stateSuggestionsRef}
                 id="state"
               >
-                <input
-                  placeholder="State"
-                  type="text"
+                <select
                   required
-                  onChange={handleStateInputChange}
                   value={stateInput}
-                />
-                {suggestionsState.length > 0 && (
-                  <ul className={styles.suggestionsList}>
-                    {suggestionsState.map((state, index) => (
-                      <li key={index} onClick={() => handleSelectState(state)}>
-                        {state}
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                  onChange={(e) => {
+                    const selectedState = e.target.value;
+                    handleSelectState(selectedState);
+                  }}
+                >
+                  <option value="">Select State</option>
+                  {allStates.map((state, index) => (
+                    <option key={index} value={state}>
+                      <ul style={{ listStyle: "none" }}>
+                        <li>{state}</li>
+                      </ul>
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
 
@@ -146,22 +151,23 @@ export default function HeroServices() {
                   ref={citySuggestionsRef}
                   id="city"
                 >
-                  <input
-                    placeholder="City"
-                    type="text"
+                  <select
                     required
-                    onChange={handleCityInputChange}
                     value={cityInput}
-                  />
-                  {suggestionsCity.length > 0 && (
-                    <ul className={styles.suggestionsList}>
-                      {suggestionsCity.map((city, index) => (
-                        <li key={index} onClick={() => handleSelectCity(city)}>
-                          {city}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
+                    onChange={(e) => {
+                      const selectedCity = e.target.value;
+                      handleSelectCity(selectedCity);
+                    }}
+                  >
+                    <option value="">Select City</option>
+                    {allCities.map((city, index) => (
+                      <option key={index} value={city}>
+                        <ul style={{ listStyle: "none" }}>
+                        <li>{city}</li>
+                      </ul>
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </div>
               <button

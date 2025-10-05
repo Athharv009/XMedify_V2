@@ -47,20 +47,19 @@
   width: 100%;
 }
 
-.service input {
+.service select {
   border: none;
   background: #fafbfe;
   animation: none;
   color: gray;
   height: 80%;
-  width: 90%; /* Ensure input takes full width of its container */
-  outline: none; /* Remove outline on focus */
+  width: 90%; 
+  outline: none; 
 }
 
-/* Styles for the suggestions list */
 .suggestionsList {
   position: absolute;
-  top: 100%; /* Position the list directly below the input */
+  top: 100%; 
   left: 0;
   right: 0;
   background-color: white;

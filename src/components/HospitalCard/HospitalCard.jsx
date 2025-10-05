@@ -27,17 +27,17 @@ const Card = ({
     if (!selectedDate || !selectedSlot) return;
 
     const booking = {
-      id: Date.now(),
-      hospitalName,
-      address,
-      city,
-      state,
-      zipCode,
-      rating,
-      hospitalType,
-      date: selectedDate,
-      time: selectedSlot,
-    };
+  id: Date.now(),
+  "Hospital Name": hospitalName,
+  "Address": address,
+  "City": city,
+  "State": state,
+  "ZIP Code": zipCode,
+  "Hospital Type": hospitalType,
+  "Rating": rating,
+  "Date": selectedDate,
+  "Time": selectedSlot
+};
 
     const existingBookings = JSON.parse(localStorage.getItem("bookings")) || [];
     existingBookings.push(booking);
