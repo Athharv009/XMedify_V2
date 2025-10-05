@@ -122,7 +122,6 @@ export default function HeroServices() {
                 <select
                   required
                   value={stateInput}
-                  id="state-select"
                   onChange={(e) => {
                     const selectedState = e.target.value;
                     handleSelectState(selectedState);
@@ -131,9 +130,7 @@ export default function HeroServices() {
                   <option value="">Select State</option>
                   {allStates.map((state, index) => (
                     <option key={index} value={state}>
-                      <ul style={{ listStyle: "none" }}>
-                        <li>{state}</li>
-                      </ul>
+                      {state}
                     </option>
                   ))}
                 </select>
@@ -155,7 +152,6 @@ export default function HeroServices() {
                   <select
                     required
                     value={cityInput}
-                    id="city-select"
                     onChange={(e) => {
                       const selectedCity = e.target.value;
                       handleSelectCity(selectedCity);
@@ -164,9 +160,7 @@ export default function HeroServices() {
                     <option value="">Select City</option>
                     {allCities.map((city, index) => (
                       <option key={index} value={city}>
-                        <ul style={{ listStyle: "none" }}>
-                        <li>{city}</li>
-                      </ul>
+                        {city}
                       </option>
                     ))}
                   </select>
