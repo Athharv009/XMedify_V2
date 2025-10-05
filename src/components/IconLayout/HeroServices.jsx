@@ -127,20 +127,19 @@ export default function HeroServices() {
                     handleSelectState(selectedState);
                   }}
                 >
-                  <option value="">Select State</option>
-                  {allStates.map((state, index) => (
-                    <option key={index} value={state}>
-                      {state}
-                    </option>
-                  ))}
+                  <ul>
+                    <li>
+                      <option value="">Select State</option>
+                    </li>
+                    <li>
+                      {allStates.map((state, index) => (
+                        <option key={index} value={state}>
+                          {state}
+                        </option>
+                      ))}
+                    </li>
+                  </ul>
                 </select>
-              </div>
-              <div style={{ display: "none" }}>
-                <ul>
-                  {allStates.map((state, index) => (
-                    <li key={index}>{state}</li>
-                  ))}
-                </ul>
               </div>
             </div>
 
@@ -164,20 +163,19 @@ export default function HeroServices() {
                       handleSelectCity(selectedCity);
                     }}
                   >
-                    <option value="">Select City</option>
-                    {allCities.map((city, index) => (
-                      <option key={index} value={city}>
-                        {city}
-                      </option>
-                    ))}
+                    <ul>
+                      <li>
+                        <option value="">Select City</option>
+                      </li>
+                      <li>
+                        {allCities.map((city, index) => (
+                          <option key={index} value={city}>
+                            {city}
+                          </option>
+                        ))}
+                      </li>
+                    </ul>
                   </select>
-                </div>
-                <div style={{ display: "none" }}>
-                  <ul>
-                    {allCities.map((city, index) => (
-                      <li key={index}>{city}</li>
-                    ))}
-                  </ul>
                 </div>
               </div>
               <button

@@ -140,20 +140,19 @@ export default function SearchBar({
             handleSelectState(selectedState);
           }}
         >
-          <option value="">Select State</option>
-          {allStates.map((state, index) => (
-            <option key={index} value={state}>
-              {state}
-            </option>
-          ))}
+          <ul>
+            <li>
+              <option value="">Select State</option>
+            </li>
+            <li>
+              {allStates.map((state, index) => (
+                <option key={index} value={state}>
+                  {state}
+                </option>
+              ))}
+            </li>
+          </ul>
         </select>
-      </div>
-      <div style={{ display: "none" }}>
-        <ul>
-          {allStates.map((state, index) => (
-            <li key={index}>{state}</li>
-          ))}
-        </ul>
       </div>
 
       <div className={styles.searchCity} id="city" ref={citySuggestionsRef}>
@@ -172,20 +171,19 @@ export default function SearchBar({
             handleSelectCity(selectedCity);
           }}
         >
-          <option value="">Select City</option>
-          {allCities.map((city, index) => (
-            <option key={index} value={city}>
-              {city}
-            </option>
-          ))}
+          <ul>
+            <li>
+              <option value="">Select City</option>
+            </li>
+            <li>
+              {allCities.map((city, index) => (
+                <option key={index} value={city}>
+                  {city}
+                </option>
+              ))}
+            </li>
+          </ul>
         </select>
-      </div>
-      <div style={{ display: "none" }}>
-        <ul>
-          {allCities.map((city, index) => (
-            <li key={index}>{city}</li>
-          ))}
-        </ul>
       </div>
       <button className={styles.btnSearch} type="submit" id="searchBtn">
         <img
