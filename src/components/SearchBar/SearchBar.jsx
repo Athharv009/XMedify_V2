@@ -148,6 +148,13 @@ export default function SearchBar({
           ))}
         </select>
       </div>
+      <div style={{ display: "none" }}>
+        <ul>
+          {allStates.map((state, index) => (
+            <li key={index}>{state}</li>
+          ))}
+        </ul>
+      </div>
 
       <div className={styles.searchCity} id="city" ref={citySuggestionsRef}>
         <img
@@ -172,6 +179,13 @@ export default function SearchBar({
             </option>
           ))}
         </select>
+      </div>
+      <div style={{ display: "none" }}>
+        <ul>
+          {allCities.map((city, index) => (
+            <li key={index}>{city}</li>
+          ))}
+        </ul>
       </div>
       <button className={styles.btnSearch} type="submit" id="searchBtn">
         <img

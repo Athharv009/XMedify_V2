@@ -135,6 +135,13 @@ export default function HeroServices() {
                   ))}
                 </select>
               </div>
+              <div style={{ display: "none" }}>
+                <ul>
+                  {allStates.map((state, index) => (
+                    <li key={index}>{state}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             {/* City Input */}
@@ -164,6 +171,13 @@ export default function HeroServices() {
                       </option>
                     ))}
                   </select>
+                </div>
+                <div style={{ display: "none" }}>
+                  <ul>
+                    {allCities.map((city, index) => (
+                      <li key={index}>{city}</li>
+                    ))}
+                  </ul>
                 </div>
               </div>
               <button

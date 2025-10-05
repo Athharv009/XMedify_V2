@@ -171,15 +171,15 @@ export default function BookingModal() {
             {filteredBookings.map((booking, index) => (
               <BookingCard
                 key={index}
-                hospitalName={booking.hospitalName}
-                hospitalType={booking.hospitalType}
-                address={booking.address}
-                city={booking.city}
-                state={booking.state}
-                zipCode={booking.zipCode}
-                rating={booking.rating}
-                date={booking.date}
-                time={booking.time}
+                hospitalName={booking.HospitalName}
+                hospitalType={booking.HospitalType}
+                address={booking.Address}
+                city={booking.City}
+                state={booking.State}
+                zipCode={booking.ZipCode}
+                rating={booking.Rating}
+                date={booking.Date}
+                time={booking.Time}
               />
             ))}
           </div>
