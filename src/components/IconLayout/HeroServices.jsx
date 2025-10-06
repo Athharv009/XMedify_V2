@@ -61,7 +61,6 @@ export default function HeroServices() {
     }
   }, [debouncedInputState, allStates]);
 
-  const handleStateInputChange = (e) => setStateInput(e.target.value);
 
   const handleSelectState = (state) => {
     setStateInput(state);
@@ -86,7 +85,6 @@ export default function HeroServices() {
     }
   }, [debouncedInputCity, allCities]);
 
-  const handleCityInputChange = (e) => setCityInput(e.target.value);
 
   const handleSelectCity = (city) => {
     setCityInput(city);
