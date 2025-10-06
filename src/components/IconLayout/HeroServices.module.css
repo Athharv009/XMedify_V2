@@ -57,6 +57,19 @@
   outline: none; 
 }
 
+.selectLike {
+  border: none;
+  background: #fafbfe;
+  color: gray;
+  height: 80%;
+  width: 90%;
+  outline: none;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+
 .suggestionsList {
   position: absolute;
   top: 100%; 

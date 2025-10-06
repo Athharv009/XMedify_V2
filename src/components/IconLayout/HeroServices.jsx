@@ -9,13 +9,14 @@ export default function HeroServices() {
   const [cityInput, setCityInput] = useState("");
   const [allStates, setAllStates] = useState([]);
   const [allCities, setAllCities] = useState([]);
+  const [showStates, setShowStates] = useState(false);
+  const [showCities, setShowCities] = useState(false);
 
   const navigate = useNavigate();
-
   const stateSuggestionsRef = useRef(null);
   const citySuggestionsRef = useRef(null);
 
-  // Fetch all states once on mount
+  // Fetch all states
   useEffect(() => {
     axios
       .get("https://meddata-backend.onrender.com/states")
@@ -23,12 +24,10 @@ export default function HeroServices() {
       .catch((err) => console.error("Error fetching States: ", err));
   }, []);
 
-
-
-
   const handleSelectState = (state) => {
     setStateInput(state);
     setCityInput("");
+    setShowStates(false);
     axios
       .get(`https://meddata-backend.onrender.com/cities/${state}`)
       .then((res) => setAllCities(res.data))
@@ -37,6 +36,7 @@ export default function HeroServices() {
 
   const handleSelectCity = (city) => {
     setCityInput(city);
+    setShowCities(false);
   };
 
   const handleSearch = () => {
@@ -54,7 +54,7 @@ export default function HeroServices() {
       <div className={styles.heroServicesMain}>
         <div className={styles.servicesContainer}>
           <form className={styles.servicesMain}>
-            {/* State Input */}
+            {/* State Dropdown */}
             <div className={styles.service}>
               <img
                 src={require("../../assets/search-icn.png")}
@@ -63,28 +63,29 @@ export default function HeroServices() {
               <div
                 className={styles.autocompleteWrapper}
                 ref={stateSuggestionsRef}
-                id="state"
               >
-                <select
-                  required
-                  value={stateInput}
-                  onChange={(e) => {
-                    const selectedState = e.target.value;
-                    handleSelectState(selectedState);
-                  }}
+                <div
+                  className={styles.selectLike}
+                  onClick={() => setShowStates((prev) => !prev)}
                 >
-                      <option value="">Select State</option>
-
-                      {allStates.map((state, index) => (
-                        <option key={index} value={state}>
-                          {state}
-                        </option>
-                      ))}
-                </select>
+                  {stateInput || "Select State"}
+                </div>
+                {showStates && (
+                  <ul className={styles.suggestionsList}>
+                    {allStates.map((state, index) => (
+                      <li
+                        key={index}
+                        onClick={() => handleSelectState(state)}
+                      >
+                        {state}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </div>
 
-            {/* City Input */}
+            {/* City Dropdown */}
             <div className={styles.btwInpBtn}>
               <div className={styles.service}>
                 <img
@@ -94,23 +95,25 @@ export default function HeroServices() {
                 <div
                   className={styles.autocompleteWrapper}
                   ref={citySuggestionsRef}
-                  id="city"
                 >
-                  <select
-                    required
-                    value={cityInput}
-                    onChange={(e) => {
-                      const selectedCity = e.target.value;
-                      handleSelectCity(selectedCity);
-                    }}
+                  <div
+                    className={styles.selectLike}
+                    onClick={() => setShowCities((prev) => !prev)}
                   >
-                        <option value="">Select City</option>
-                    {allCities.map((city, index) => (
-                      <option key={index} value={city}>
-                        {city}
-                      </option>
-                    ))}
-                  </select>
+                    {cityInput || "Select City"}
+                  </div>
+                  {showCities && (
+                    <ul className={styles.suggestionsList}>
+                      {allCities.map((city, index) => (
+                        <li
+                          key={index}
+                          onClick={() => handleSelectCity(city)}
+                        >
+                          {city}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </div>
               <button
