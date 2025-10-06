@@ -2,21 +2,15 @@ import { useEffect, useState, useRef } from "react";
 import IconCard from "../IconCard/IconCard";
 import styles from "./HeroServices.module.css";
 import axios from "axios";
-import useDebounce from "../../hooks/useDebounce";
 import { useNavigate } from "react-router";
 
 export default function HeroServices() {
   const [stateInput, setStateInput] = useState("");
   const [cityInput, setCityInput] = useState("");
-  const [suggestionsState, setSuggestionsState] = useState([]);
-  const [suggestionsCity, setSuggestionsCity] = useState([]);
   const [allStates, setAllStates] = useState([]);
   const [allCities, setAllCities] = useState([]);
 
   const navigate = useNavigate();
-
-  const debouncedInputState = useDebounce(stateInput, 500);
-  const debouncedInputCity = useDebounce(cityInput, 500);
 
   const stateSuggestionsRef = useRef(null);
   const citySuggestionsRef = useRef(null);
@@ -29,66 +23,20 @@ export default function HeroServices() {
       .catch((err) => console.error("Error fetching States: ", err));
   }, []);
 
-  // Close suggestions when clicking outside
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (
-        stateSuggestionsRef.current &&
-        !stateSuggestionsRef.current.contains(event.target)
-      ) {
-        setSuggestionsState([]);
-      }
-      if (
-        citySuggestionsRef.current &&
-        !citySuggestionsRef.current.contains(event.target)
-      ) {
-        setSuggestionsCity([]);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
 
-  // Filter state suggestions
-  useEffect(() => {
-    if (debouncedInputState.length > 0) {
-      const filtered = allStates.filter((item) =>
-        item.toLowerCase().startsWith(debouncedInputState.toLowerCase())
-      );
-      setSuggestionsState(filtered);
-    } else {
-      setSuggestionsState([]);
-    }
-  }, [debouncedInputState, allStates]);
 
 
   const handleSelectState = (state) => {
     setStateInput(state);
-    setSuggestionsState([]);
     setCityInput("");
-    setSuggestionsCity([]);
     axios
       .get(`https://meddata-backend.onrender.com/cities/${state}`)
       .then((res) => setAllCities(res.data))
       .catch((err) => console.error("Error fetching Cities: ", err));
   };
 
-  // Filter city suggestions
-  useEffect(() => {
-    if (debouncedInputCity.length > 0 && allCities.length > 0) {
-      const filtered = allCities.filter((item) =>
-        item.toLowerCase().startsWith(debouncedInputCity.toLowerCase())
-      );
-      setSuggestionsCity(filtered);
-    } else {
-      setSuggestionsCity([]);
-    }
-  }, [debouncedInputCity, allCities]);
-
-
   const handleSelectCity = (city) => {
     setCityInput(city);
-    setSuggestionsCity([]);
   };
 
   const handleSearch = () => {
@@ -125,18 +73,13 @@ export default function HeroServices() {
                     handleSelectState(selectedState);
                   }}
                 >
-                  <ul>
-                    <li>
                       <option value="">Select State</option>
-                    </li>
-                    <li>
+
                       {allStates.map((state, index) => (
                         <option key={index} value={state}>
                           {state}
                         </option>
                       ))}
-                    </li>
-                  </ul>
                 </select>
               </div>
             </div>
@@ -161,18 +104,12 @@ export default function HeroServices() {
                       handleSelectCity(selectedCity);
                     }}
                   >
-                    <ul>
-                      <li>
                         <option value="">Select City</option>
-                      </li>
-                      <li>
                     {allCities.map((city, index) => (
                       <option key={index} value={city}>
                         {city}
                       </option>
                     ))}
-                      </li>
-                    </ul>
                   </select>
                 </div>
               </div>
