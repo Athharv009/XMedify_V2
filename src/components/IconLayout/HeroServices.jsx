@@ -63,6 +63,7 @@ export default function HeroServices() {
               <div
                 className={styles.autocompleteWrapper}
                 ref={stateSuggestionsRef}
+                id="state"
               >
                 <div
                   className={styles.selectLike}
@@ -95,6 +96,7 @@ export default function HeroServices() {
                 <div
                   className={styles.autocompleteWrapper}
                   ref={citySuggestionsRef}
+                  id="city"
                 >
                   <div
                     className={styles.selectLike}
