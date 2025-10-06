@@ -12,7 +12,10 @@ const Card = ({
   hospitalType,
 }) => {
   const [bookingClick, setBookingClick] = useState(false);
-  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedDate, setSelectedDate] = useState(() => {
+    const today = new Date();
+    return today.toISOString().split("T")[0]; // ✅ Default to Today
+  });
   const [selectedSlot, setSelectedSlot] = useState("");
   const [startIndex, setStartIndex] = useState(0);
 
@@ -43,9 +46,8 @@ const Card = ({
     existingBookings.push(booking);
     localStorage.setItem("bookings", JSON.stringify(existingBookings));
 
-    // reset UI
     setBookingClick(false);
-    setSelectedDate("");
+    setSelectedDate(new Date().toISOString().split("T")[0]); // reset to today
     setSelectedSlot("");
   };
 
@@ -214,6 +216,7 @@ const Card = ({
           <div className={styles.bookingContent}>
             <h3 className={styles.bookingTitle}>Book Your Appointment</h3>
 
+            {/* Date Tabs Section */}
             <div className={styles.dateTabsWrapper}>
               <button
                 className={styles.arrowBtn}
@@ -272,7 +275,9 @@ const Card = ({
                         .findIndex((_, i) => {
                           const d = new Date();
                           d.setDate(d.getDate() + (i + startIndex));
-                          return d.toISOString().split("T")[0] === selectedDate;
+                          return (
+                            d.toISOString().split("T")[0] === selectedDate
+                          );
                         }) * 100
                     }%)`,
                   }}
@@ -293,6 +298,7 @@ const Card = ({
               </button>
             </div>
 
+            {/* Time Slots Section */}
             <div style={{ marginLeft: "20px", marginRight: "20px" }}>
               {selectedDate && (
                 <div className={styles.timeSlots}>
